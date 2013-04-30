@@ -1,2 +1,6 @@
 jamendo_api_credentials.conf
-
+node_modules
+temp
+dist
+.sass-cache
+app/components
