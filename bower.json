@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate-marionette-amd",
+  "name": "rubycluster-jamendo-contest",
   "version": "0.0.1",
   "dependencies": {
     "sass-bootstrap": "~2.3.0",
