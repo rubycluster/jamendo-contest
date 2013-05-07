@@ -12,6 +12,7 @@ require.config
     underscore: "../components/underscore/underscore"
     bootstrap: "vendor/bootstrap"
     backbone_marionette: "../components/backbone.marionette/lib/backbone.marionette"
+    groundwork: "vendor/groundwork.all"
 
   shim:
 
@@ -35,6 +36,18 @@ require.config
     bootstrap:
       exports: "jquery"
       deps: ["jquery"]
+
+    groundwork:
+      exports: "GroundworkCSS"
+      deps: [
+        "jquery"
+        "vendor/jquery-modals"
+        "vendor/jquery-popover"
+        "vendor/jquery-responsiveTables"
+        "vendor/jquery-responsiveText"
+        "vendor/jquery-tooltip"
+        "vendor/jquery.cycle2"
+      ]
 
     app:
       deps: [ 'app_deps' ]

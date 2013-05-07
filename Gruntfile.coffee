@@ -145,7 +145,7 @@ module.exports = (grunt) ->
         cssDir: "<%= yeoman.tmp %>/styles"
         imagesDir: "<%= yeoman.app %>/images"
         javascriptsDir: "<%= yeoman.app %>/scripts"
-        fontsDir: "<%= yeoman.app %>/styles/fonts"
+        fontsDir: "<%= yeoman.app %>/fonts"
         importPath: "app/components"
         relativeAssets: true
 
@@ -211,7 +211,12 @@ module.exports = (grunt) ->
           dot: true
           cwd: "<%= yeoman.app %>"
           dest: "<%= yeoman.dist %>"
-          src: ["*.{ico,txt}", ".htaccess", "images/{,*/}*.{webp,gif}"]
+          src: [
+            "*.{ico,txt}"
+            ".htaccess"
+            "images/{,*/}*.{webp,gif}"
+            "fonts/*.*"
+          ]
         ]
 
       js:

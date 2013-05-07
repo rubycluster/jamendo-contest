@@ -3,5 +3,6 @@ define [
   'underscore'
   'backbone'
   'backbone_marionette'
+  'groundwork'
 ], () ->
 
