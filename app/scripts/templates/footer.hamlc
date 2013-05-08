@@ -1,0 +1,15 @@
+#footer
+
+  .message.alert
+    .small
+      %a{href: 'https://github.com/rubycluster/jamendo-contest', target: '_blank'}<
+        Developed
+      by
+      %a{href: 'http://vladalive.com', target: '_blank'}<
+        Vlad Alive
+      at
+      %a{href: 'http://rubycluster.com', target: '_blank'}<
+        Ruby Cluster
+      for
+      %a{href: 'http://developer.jamendo.com/contest', target: '_blank'}<
+        Jamendo Contest

@@ -1,0 +1,19 @@
+%form#location-form
+
+  .row
+
+    %span.prefix.two.twelfth
+      %label{for: 'location'}
+        Location
+
+    .six.twelfth
+      %input#location{type: 'text', placeholder: 'Enter location (e.g. San Francisco)'}
+
+    %a.one.twelfth.suffix{href: '#', title: 'My Location'}
+      %span.small-tablet-only
+        My Location
+      %i.icon-globe
+
+    %a.button.orange.two.twelfth.skip-one{href: '#', title: 'Play'}
+      Play
+      %i.icon-play-circle

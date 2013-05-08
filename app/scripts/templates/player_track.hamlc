@@ -1,0 +1,23 @@
+#player-track
+
+  .callout.info
+    .row
+      .four.twelfth.small-tablet
+        .cover.rounded-5
+          -# %img{src: '#'}
+          .img
+            .icon-music
+      .seven.twelfth.skip-one.small-tablet
+        .track
+          .tag
+            track
+          .title
+            = @title
+          .tag
+            artist
+          .artist
+            = @artist
+          .tag
+            album
+          .album
+            = @album

@@ -1,0 +1,19 @@
+#player-controls
+
+  .row
+    %ul.button-list.large.align-center
+      %li.mobile.one.fifth
+        %a
+          .icon-step-backward
+      %li.mobile.one.fifth
+        %a
+          .icon-play
+      %li.mobile.one.fifth
+        %a
+          .icon-pause
+      %li.mobile.one.fifth
+        %a
+          .icon-stop
+      %li.mobile.one.fifth
+        %a
+          .icon-step-forward

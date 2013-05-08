@@ -1,1 +1,14 @@
-%h1 Home
+#main-wrapper.row.padded
+
+  %h1.align-center.blue
+    Play Weather
+
+  #main-container.six.twelfths.skip-three.padded.bordered.rounded-5
+
+    != require('templates/location_form')()
+    != require('templates/location_title')(@location)
+    != require('templates/player_track')(@player_track)
+    != require('templates/player_controls')()
+    != require('templates/weather_mood')(@weather_mood)
+    != require('templates/weather')()
+    != require('templates/footer')()

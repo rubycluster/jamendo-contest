@@ -1,7 +1,8 @@
 define [
   'backbone_marionette'
   'templates/home'
-], (Marionette, template) ->
+  'models/dummy'
+], (Marionette, template, DummyModel) ->
 
   class HomePageView extends Marionette.ItemView
 
@@ -10,5 +11,13 @@ define [
     el: '.container'
 
     initialize: ->
+      @model = new DummyModel()
       @render()
       @
+
+    onRender: ->
+      $('body')
+        .removeClass('cover')
+        .addClass('blank')
+        .removeClass('blank')
+        .addClass('cover')
