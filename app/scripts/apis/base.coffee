@@ -12,7 +12,7 @@ define [
 
     dataDefaults: {}
 
-    initialize: (options) ->
+    initialize: (options = {}) ->
       @options = options
       @prepareData()
       @response = {}
