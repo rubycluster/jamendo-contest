@@ -20,13 +20,15 @@ define [
       @
 
     request: ->
-      dfr = $.ajax
-        type: 'GET'
-        url: @baseUrl
-        data: @data
-        dataType: 'json'
+      dfr = $.ajax @ajaxParams()
       dfr.done @ajaxCallback
       dfr
+
+    ajaxParams: ->
+      type: 'GET'
+      url: @baseUrl
+      data: @data
+      dataType: 'json'
 
     ajaxCallback: (data, status, xhr) =>
       @response = arguments
