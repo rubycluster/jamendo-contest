@@ -12,11 +12,6 @@ define [
       # lat: undefined
       # lng: undefined
 
-    initialize: (options) ->
-      super
-      @request()
-      @
-
     prepareData: ->
       latlng = [
         @options.data.lat

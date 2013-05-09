@@ -1,9 +1,10 @@
 define [
-  'backbone_marionette'
+  'views/layouts/base'
   'templates/layouts/main'
-], (Marionette, template) ->
+  'views/location_form'
+], (BaseLayout, template, LocationFormView) ->
 
-  class MainLayout extends Marionette.Layout
+  class MainLayout extends BaseLayout
 
     template: template
 
@@ -23,3 +24,7 @@ define [
     initialize: ->
       @render()
       @
+
+    onRender: ->
+      @assignSubView
+        '#location-form': new LocationFormView
