@@ -23,8 +23,8 @@ define [
       'click #geolocate': 'location:geolocate'
 
     initialize: ->
-      super
       @initTriggers()
+      super
       @
 
     initTriggers: ->
@@ -32,6 +32,7 @@ define [
       @on 'location:geolocate', @locationGeolocate
 
     onRender: ->
+      @triggerGeolocate()
       @ui.input.focus()
 
     locationSubmit: ->
@@ -59,3 +60,6 @@ define [
         el.addClass('spin')
       else
         el.removeClass('spin')
+
+    triggerGeolocate: ->
+      $(@ui.geolocate).trigger 'click'
