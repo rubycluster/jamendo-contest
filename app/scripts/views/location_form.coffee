@@ -7,12 +7,17 @@ define [
 
   class LocationFormView extends BaseItemView
 
+    options:
+      inputDelay: 5000
+      geolocateDelay: 4000
+
     template: template
 
     el: '#location-form'
 
     ui:
       form: 'form'
+      row: '.row'
       input: '#location'
       geolocate: '#geolocate'
       play: '#location-submit'
@@ -21,6 +26,7 @@ define [
       'submit form': 'location:submit'
       'click #location-submit': 'location:submit'
       'click #geolocate': 'location:geolocate'
+      'input #location': 'location:change'
 
     initialize: ->
       @initTriggers()
@@ -28,8 +34,9 @@ define [
       @
 
     initTriggers: ->
-      @on 'location:submit', @locationSubmit
-      @on 'location:geolocate', @locationGeolocate
+      @on 'location:submit', _.throttle(@locationSubmit, @options.inputDelay)
+      @on 'location:geolocate', _.throttle(@locationGeolocate, @options.geolocateDelay)
+      @on 'location:change', @locationChange
       @on 'location:found', @locationFound
 
     onRender: ->
@@ -75,7 +82,27 @@ define [
           address: address
       dfr = api.request()
       dfr.done =>
-        $(@ui.input).val api.result
+        result = api.result
+        if _.any result
+          @setValidForm true
+          $(@ui.input).val result
+        else
+          @setValidForm false
       dfr
+
+    setValidForm: (valid = true) ->
+      if valid
+        @ui.row
+          .removeClass('invalid')
+          .addClass('valid')
+      else
+        @ui.row
+          .removeClass('valid')
+          .addClass('invalid')
+
+    locationChange: ->
+      @ui.row
+        .removeClass('valid')
+        .removeClass('invalid')
 
     locationFound: ->
