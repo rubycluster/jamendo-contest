@@ -1,14 +1,20 @@
 #main-wrapper.row.padded
 
-  %h1.align-center.blue
-    Play Weather
+  != require('templates/shared/app_title')()
 
   #main-container.six.twelfths.skip-three.padded.bordered.rounded-5
 
-    != require('templates/location_form')()
-    != require('templates/location_title')(@location)
-    != require('templates/player_track')(@player_track)
-    != require('templates/player_controls')()
-    != require('templates/weather_mood')(@weather_mood)
-    != require('templates/weather')()
-    != require('templates/footer')()
+    #location-form
+      != require('templates/location_form')()
+    #location-title
+      != require('templates/location_title')(@location)
+    #player-track
+      != require('templates/player_track')(@player_track)
+    #player-controls
+      != require('templates/player_controls')()
+    #weather-mood
+      != require('templates/weather_mood')(@weather_mood)
+    #weather-info
+      != require('templates/weather')()
+    #footer
+      != require('templates/footer')()
