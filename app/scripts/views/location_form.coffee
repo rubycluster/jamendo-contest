@@ -30,12 +30,11 @@ define [
     initTriggers: ->
       @on 'location:submit', @locationSubmit
       @on 'location:geolocate', @locationGeolocate
+      @on 'location:found', @locationFound
 
     onRender: ->
       @triggerGeolocate()
       @ui.input.focus()
-
-    locationSubmit: ->
 
     locationGeolocate: ->
       @locationGeolocateSpinner true
@@ -63,3 +62,20 @@ define [
 
     triggerGeolocate: ->
       $(@ui.geolocate).trigger 'click'
+
+    locationSubmit: ->
+      address = $(@ui.input).val()
+      @locationFix(address)
+        .done =>
+          @trigger 'location:found'
+
+    locationFix: (address) ->
+      api = new ReverseGeocodingAPI
+        data:
+          address: address
+      dfr = api.request()
+      dfr.done =>
+        $(@ui.input).val api.result
+      dfr
+
+    locationFound: ->

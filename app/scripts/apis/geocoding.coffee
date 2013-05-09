@@ -11,11 +11,6 @@ define [
       language: 'en'
       # address: undefined
 
-    initialize: (options) ->
-      super
-      @request()
-      @
-
     prepareResult: ->
       data = super?.results
       data = data? && _(data).first()?.geometry?.location

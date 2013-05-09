@@ -13,13 +13,7 @@ define [
       # lng: undefined
 
     prepareData: ->
-      latlng = [
-        @options.data.lat
-        @options.data.lng
-      ].join(',')
-      delete @options.data.lat
-      delete @options.data.lng
-      @options.data.latlng = latlng
+      @prepareDataLatLng()
       super
 
     prepareResult: ->
@@ -29,3 +23,13 @@ define [
         _(i.types).include('locality')
       data = data?.long_name
       @result = data || ''
+
+    prepareDataLatLng: ->
+      if @options.data?.lat? and @options.data?.lng?
+        latlng = [
+          @options.data.lat
+          @options.data.lng
+        ].join(',')
+        delete @options.data.lat
+        delete @options.data.lng
+        @options.data.latlng = latlng
