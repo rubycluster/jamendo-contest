@@ -2,7 +2,9 @@ define [
   'views/layouts/base'
   'templates/layouts/main'
   'views/location_form'
-], (BaseLayout, template, LocationFormView) ->
+  'views/location_title'
+  'models/area'
+], (BaseLayout, template, LocationFormView, LocationTitleView, Area) ->
 
   class MainLayout extends BaseLayout
 
@@ -21,10 +23,25 @@ define [
       weather_info: '#weather-info'
       footer: '#footer'
 
+    models: {}
+    views: {}
+
     initialize: ->
+      @initModels()
+      @initViews()
       @render()
       @
 
+    initModels: ->
+      @models.area = new Area()
+
+    initViews: ->
+      @views.location_form = new LocationFormView
+        model: @models.area
+      @views.location_title = new LocationTitleView
+        model: @models.area
+
     onRender: ->
       @assignSubView
-        '#location-form': new LocationFormView
+        '#location-form': @views.location_form
+        '#location-title': @views.location_title

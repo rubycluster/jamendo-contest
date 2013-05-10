@@ -1,3 +1,4 @@
-.callout
-  %h2
-    = @title
+- if _.any @address
+  .callout
+    %h2
+      = @address

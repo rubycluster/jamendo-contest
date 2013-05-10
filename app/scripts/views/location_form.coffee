@@ -1,9 +1,10 @@
 define [
   'views/base/item_view'
   'templates/location_form'
+  'models/area'
   'apis/geolocation'
   'apis/reverse_geocoding'
-], (BaseItemView, template, GeolocationAPI, ReverseGeocodingAPI) ->
+], (BaseItemView, template, Area, GeolocationAPI, ReverseGeocodingAPI) ->
 
   class LocationFormView extends BaseItemView
 
@@ -28,6 +29,11 @@ define [
       'click #geolocate': 'location:geolocate'
       'input #location': 'location:change'
 
+    model: Area
+
+    modelEvents:
+      'change:address': 'onAddressChange'
+
     initialize: ->
       @initTriggers()
       super
@@ -37,7 +43,6 @@ define [
       @on 'location:submit', _.throttle(@locationSubmit, @options.inputDelay)
       @on 'location:geolocate', _.throttle(@locationGeolocate, @options.geolocateDelay)
       @on 'location:change', @locationChange
-      @on 'location:found', @locationFound
 
     onRender: ->
       @triggerGeolocate()
@@ -57,7 +62,7 @@ define [
       api = new ReverseGeocodingAPI
         data: position
       api.request().done =>
-        $(@ui.input).val api.result
+        @model.set 'address', api.result
         @locationGeolocateSpinner false
 
     locationGeolocateSpinner: (spin = true) ->
@@ -72,9 +77,8 @@ define [
 
     locationSubmit: ->
       address = $(@ui.input).val()
+      @model.set 'address', address
       @locationFix(address)
-        .done =>
-          @trigger 'location:found'
 
     locationFix: (address) ->
       api = new ReverseGeocodingAPI
@@ -85,9 +89,12 @@ define [
         result = api.result
         if _.any result
           @setValidForm true
-          $(@ui.input).val result
+          @model.set 'address', result
+          position = api.response[0].results[0].geometry.location
+          @model.set 'position', position
         else
           @setValidForm false
+        result
       dfr
 
     setValidForm: (valid = true) ->
@@ -105,4 +112,5 @@ define [
         .removeClass('valid')
         .removeClass('invalid')
 
-    locationFound: ->
+    onAddressChange: (model, value) ->
+      $(@ui.input).val value
