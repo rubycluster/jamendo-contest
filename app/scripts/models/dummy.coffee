@@ -6,7 +6,7 @@ define [
 
     defaults:
       location:
-        title: 'San Francisco, USA'
+        address: 'San Francisco, USA'
       player_track:
         title: 'Alive'
         artist: 'P.O.D.'
