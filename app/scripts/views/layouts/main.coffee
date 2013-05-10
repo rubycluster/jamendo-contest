@@ -39,9 +39,9 @@ define [
     initViews: ->
       @views.location_form = new LocationFormView
         model: @models.area
-      @views.location_title = new LocationTitleView
-        model: @models.area
       @views.location_title = new BackgroundImageView
+        model: @models.area
+      @views.location_title = new LocationTitleView
         model: @models.area
 
     onRender: ->
