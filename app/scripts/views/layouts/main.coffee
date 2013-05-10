@@ -42,6 +42,9 @@ define [
         model: @models.area
 
     onRender: ->
+      $('body')
+        .removeClass('cover')
+        .addClass('blank')
       @assignSubView
         '#location-form': @views.location_form
         '#location-title': @views.location_title
