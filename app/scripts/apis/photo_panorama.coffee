@@ -20,11 +20,6 @@ define [
       # maxx: undefined
       # maxy: undefined
 
-    initialize: (options) ->
-      super
-      @request()
-      @
-
     ajaxParams: ->
       $.extend {}, super,
         dataType: 'jsonp'

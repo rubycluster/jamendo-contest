@@ -3,8 +3,9 @@ define [
   'templates/layouts/main'
   'views/location_form'
   'views/location_title'
+  'views/background_image'
   'models/area'
-], (BaseLayout, template, LocationFormView, LocationTitleView, Area) ->
+], (BaseLayout, template, LocationFormView, LocationTitleView, BackgroundImageView, Area) ->
 
   class MainLayout extends BaseLayout
 
@@ -39,6 +40,8 @@ define [
       @views.location_form = new LocationFormView
         model: @models.area
       @views.location_title = new LocationTitleView
+        model: @models.area
+      @views.location_title = new BackgroundImageView
         model: @models.area
 
     onRender: ->

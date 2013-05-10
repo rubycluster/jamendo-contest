@@ -9,3 +9,4 @@ define [
       position:
         lat: undefined
         lng: undefined
+      background: undefined
