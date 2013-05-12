@@ -13,6 +13,7 @@ require.config
     bootstrap: "vendor/bootstrap"
     backbone_marionette: "../components/backbone.marionette/lib/backbone.marionette"
     groundwork: "vendor/groundwork.all"
+    moment: "../components/moment/moment"
 
   shim:
 

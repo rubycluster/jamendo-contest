@@ -4,5 +4,6 @@ define [
   'backbone'
   'backbone_marionette'
   'groundwork'
+  'moment'
 ], () ->
 
