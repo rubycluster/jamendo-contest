@@ -20,7 +20,7 @@ define [
       data
 
     getLocationBounds: (data) ->
-      return unless _.any(data.lat) and _.any(data.lng)
+      return unless _.isFinite(data.lat) and _.isFinite(data.lng)
       delta = 0.03
       data.minx = data.lng - delta
       data.miny = data.lat - delta
