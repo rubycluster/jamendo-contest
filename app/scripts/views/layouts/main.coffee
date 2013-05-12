@@ -3,9 +3,9 @@ define [
   'templates/layouts/main'
   'views/location_form'
   'views/location_title'
-  'views/background_image'
+  'views/panorama'
   'models/area'
-], (BaseLayout, template, LocationFormView, LocationTitleView, BackgroundImageView, Area) ->
+], (BaseLayout, template, LocationFormView, LocationTitleView, PanoramaView, Area) ->
 
   class MainLayout extends BaseLayout
 
@@ -30,6 +30,7 @@ define [
     initialize: ->
       @initModels()
       @initViews()
+      @initViewsEvents()
       @render()
       @
 
@@ -39,10 +40,13 @@ define [
     initViews: ->
       @views.location_form = new LocationFormView
         model: @models.area
-      @views.location_title = new BackgroundImageView
-        model: @models.area
+      @views.panorama = new PanoramaView
       @views.location_title = new LocationTitleView
         model: @models.area
+
+    initViewsEvents: ->
+      @models.area.on 'change:position', (model, value) =>
+        @views.panorama.updateWithPosition value
 
     onRender: ->
       $('body')

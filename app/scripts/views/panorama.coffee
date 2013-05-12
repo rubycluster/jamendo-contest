@@ -1,23 +1,25 @@
 define [
   'views/base/item_view'
-  'models/area'
-  'apis/photo_panorama'
-], (BaseItemView, Area, PhotoPanoramaAPI) ->
+  'models/panorama'
+], (BaseItemView, Panorama) ->
 
-  class BackgroundImageView extends BaseItemView
+  class PanoramaView extends BaseItemView
 
     modelEvents:
-      'change:position': 'onChangePosition'
-      'change:background': 'onChangeBackground'
+      'change:url': 'changeBackground'
 
-    onChangePosition: (model, value) ->
-      api = new PhotoPanoramaAPI
-        data: value
-      api.request()
-        .done =>
-          @model.set 'background', api.result
+    initialize: ->
+      super
+      @model = new Panorama
+      @
 
-    onChangeBackground: (model, value) ->
+    updateWithPosition: (value) ->
+      @model.set
+        lat: value.lat
+        lng: value.lng
+      @model.fetch()
+
+    changeBackground: (model, value) ->
       if _.any(value)
         @setBackgroundImage value
       else
