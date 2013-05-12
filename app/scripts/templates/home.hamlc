@@ -15,6 +15,6 @@
     #weather-mood
       != require('templates/weather_mood')(@weather_mood)
     #weather-info
-      != require('templates/weather')()
+      != require('templates/weather_info')(@weather_info)
     #footer
       != require('templates/footer')()
