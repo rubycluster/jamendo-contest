@@ -5,8 +5,8 @@ define [
 
   class BaseAPI
 
-    constructor: (args) ->
-      @initialize args
+    constructor: ->
+      @initialize.apply @, arguments
 
     baseUrl: ''
 
