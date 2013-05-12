@@ -48,8 +48,9 @@ define [
 
     initViewsEvents: ->
       @models.area.on 'change:position', (model, value) =>
-        @views.panorama.updateWithPosition value
         @views.weather_info.updateWithPosition value
+      @models.area.on 'change:position', (model, value) =>
+        @views.panorama.updateWithPosition value
 
     onRender: ->
       $('body')
