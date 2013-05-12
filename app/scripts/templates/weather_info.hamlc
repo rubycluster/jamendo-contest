@@ -1,0 +1,21 @@
+- if _.any @response
+
+  - days = h.filterWeatherDays @response.list
+
+  %table
+    %colgroup
+      %col
+      %col
+      %col
+      %col
+      %col
+    %thead
+      %tr
+        - for day in days
+          %th
+            = moment(day.dt * 1000).format('dddd')
+    %tbody
+      %tr
+        - for day in days
+          %td.large.temp
+            = Math.round day.main.temp

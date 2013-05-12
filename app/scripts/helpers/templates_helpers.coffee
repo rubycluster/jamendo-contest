@@ -9,7 +9,12 @@ define [
   # Add HAML helpers here available from templates
   _.extend TemplatesHelpers,
 
-    # someHelper: ->
-    #   'someValue'
+    filterWeatherDays: (list) ->
+      _.chain(list)
+        .filter( (item, index) ->
+          (index + 8) % 8 == 0
+        )
+        .first(5)
+        .value()
 
   TemplatesHelpers
