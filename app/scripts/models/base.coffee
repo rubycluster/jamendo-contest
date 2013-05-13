@@ -6,6 +6,12 @@ define [
 
     serverAttrs: []
 
+    get: (attr) ->
+      if typeof this[attr] is "function"
+        this[attr]()
+      else
+        super
+
     toServerJSON: ->
       json = _.clone @toJSON()
       if _.any @serverAttrs
