@@ -6,9 +6,10 @@ define [
   'views/panorama'
   'views/weather_info'
   'views/weather_mood'
+  'views/footer'
   'models/area'
   'models/weather'
-], (BaseLayout, template, LocationFormView, LocationTitleView, PanoramaView, WeatherInfoView, WeatherMoodView, Area, Weather) ->
+], (BaseLayout, template, LocationFormView, LocationTitleView, PanoramaView, WeatherInfoView, WeatherMoodView, FooterView, Area, Weather) ->
 
   class MainLayout extends BaseLayout
 
@@ -50,6 +51,8 @@ define [
       @views.weather_info = new WeatherInfoView
         model: @models.weather
       @views.weather_mood = new WeatherMoodView
+      @views.footer = new FooterView
+        hiddenOnce: true
 
     initViewsEvents: ->
       @views.location_form.on 'location:submit', =>
@@ -60,6 +63,8 @@ define [
         @views.panorama.updateWithPosition value
       @models.weather.on 'change:response', (model, value) =>
         @views.weather_mood.updateWithWeather value
+      @models.area.on 'change:position', (model, value) =>
+        @views.footer.showView()
 
     onRender: ->
       $('body')
@@ -70,11 +75,13 @@ define [
         '#location-title': @views.location_title
         '#weather-info': @views.weather_info
         '#weather-mood': @views.weather_mood
+        '#footer': @views.footer
 
     hideInfoViews: ->
       _([
         'location_title'
         'weather_mood'
         'weather_info'
+        'footer'
       ]).each (name) =>
         @views[name].hideView()
