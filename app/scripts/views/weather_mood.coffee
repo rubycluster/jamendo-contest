@@ -29,10 +29,10 @@ define [
     onItemsChange: (model, value) ->
       @collection.set model.get('collectionItems')
 
-    updateWithWeather: (weather) ->
+    updateWithWeather: (weatherResponse) ->
       @collection.reset()
       @model.set 'title', 'Today'
-      @model.generateItems weather
+      @model.generateItems weatherResponse.list[0]
 
     onBeforeRender: ->
       @isValidToShow() && @showView() || @hideView()

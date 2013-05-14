@@ -2,7 +2,8 @@ define [
   'models/base'
   'models/weather_mood_item'
   'objects/weather_mood_items'
-], (BaseModel, WeatherMoodItem, weatherMoodItems) ->
+  'helpers/weather_to_visual'
+], (BaseModel, WeatherMoodItem, weatherMoodItems, WeatherToVisual) ->
 
   class WeatherMood extends BaseModel
 
@@ -25,13 +26,9 @@ define [
         .compact()
         .value()
 
-    generateItems: (weather) ->
-      items = [
-        {temperature: '10&deg;C'}
-        'cold'
-        'cloudy'
-        'rain'
-      ]
+    generateItems: (weather = {}) ->
+      converter = new WeatherToVisual weather
+      items = converter.convert().result
       @unset 'items'
         silent: true
       @set 'items', items
