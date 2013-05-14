@@ -1,19 +1,10 @@
 define [
   'backbone_marionette'
-], (Marionette) ->
+  'views/base/mixins'
+], (Marionette, ViewsMixins) ->
 
   class BaseItemView extends Marionette.ItemView
 
-    initialize: ->
+  _.extend BaseItemView.prototype, ViewsMixins
 
-    assignSubView: (selector, view) ->
-      if _.isObject(selector)
-        selectors = selector
-      else
-        selectors = {}
-        selectors[selector] = view
-      return unless selectors
-      _.each selectors, (view, selector) ->
-        if view && @$(selector)
-          view.setElement( @$(selector) ).render()
-      , this
+  BaseItemView
