@@ -23,3 +23,9 @@ define [
         lat: value.lat
         lng: value.lng
       @model.fetch()
+
+    onRender: ->
+      @isValidToShow() && @showView()
+
+    isValidToShow: ->
+      _.any @model.get('response')

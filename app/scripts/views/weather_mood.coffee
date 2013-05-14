@@ -27,7 +27,9 @@ define [
       @
 
     onItemsChange: (model, value) ->
+      @hideView()
       @collection.set model.get('collectionItems')
+      @showView()
 
     updateWithWeather: (weatherResponse) ->
       @collection.reset()
@@ -35,7 +37,10 @@ define [
       @model.generateItems weatherResponse.list[0]
 
     onBeforeRender: ->
-      @isValidToShow() && @showView() || @hideView()
+      @hideView()
+
+    onRender: ->
+      @isValidToShow() && @showView()
 
     isValidToShow: ->
-      _.any @model.get('title')
+      _.any @model.get('title') and _.any @model.get('items')

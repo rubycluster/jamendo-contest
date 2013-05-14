@@ -17,3 +17,12 @@ define [
       super
       @model ||= new Area
       @
+
+    onBeforeRender: ->
+      @hideView()
+
+    onRender: ->
+      @isValidToShow() && @showView()
+
+    isValidToShow: ->
+      _.any @model.get('address')

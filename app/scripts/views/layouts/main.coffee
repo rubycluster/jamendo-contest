@@ -52,6 +52,8 @@ define [
       @views.weather_mood = new WeatherMoodView
 
     initViewsEvents: ->
+      @views.location_form.on 'location:submit', =>
+        @hideInfoViews()
       @models.area.on 'change:position', (model, value) =>
         @views.weather_info.updateWithPosition value
       @models.area.on 'change:position', (model, value) =>
@@ -68,3 +70,11 @@ define [
         '#location-title': @views.location_title
         '#weather-info': @views.weather_info
         '#weather-mood': @views.weather_mood
+
+    hideInfoViews: ->
+      _([
+        'location_title'
+        'weather_mood'
+        'weather_info'
+      ]).each (name) =>
+        @views[name].hideView()

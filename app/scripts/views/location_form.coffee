@@ -39,6 +39,7 @@ define [
       @
 
     initTriggers: ->
+      @on 'location:submit', @setSpinner
       @on 'location:submit', _.throttle(@locationSubmit, @options.inputDelay)
       @on 'location:geolocate', _.throttle(@locationGeolocate, @options.geolocateDelay)
       @on 'location:change', @locationChange
@@ -48,23 +49,22 @@ define [
       @ui.input.focus()
 
     locationGeolocate: ->
-      @locationGeolocateSpinner true
       api = new GeolocationAPI()
       api.geolocate()
         .done (position) =>
           @locationReverseGeocoding position
         .fail (message) =>
-          @locationGeolocateSpinner false
           alert message
 
     locationReverseGeocoding: (position) ->
       api = new ReverseGeocodingAPI
         data: position
       api.request().done =>
+        @model.unset 'address',
+          silent: true
         @model.set 'address', api.result
-        @locationGeolocateSpinner false
 
-    locationGeolocateSpinner: (spin = true) ->
+    setSpinner: (spin = true) ->
       el = @ui.geolocate.find('i')
       if spin
         el.addClass('spin')
@@ -93,6 +93,7 @@ define [
           @model.set 'position', position
         else
           @setValidForm false
+        @setSpinner false
         result
       dfr
 
