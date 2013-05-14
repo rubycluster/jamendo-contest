@@ -45,4 +45,4 @@ Copyright (c) 2013 [Vlad Alive](http://github.com/vladalive)
 
 # Credits
 
-[Developed](https://github.com/rubycluster/jamendo-contest) by [Vlad Alive](http://vladalive.com) at [Ruby Cluster](href: 'http://rubycluster.com) for [Jamendo Contest](http://developer.jamendo.com/contest)
+[Developed](https://github.com/rubycluster/jamendo-contest) by [Vlad Alive](http://vladalive.com) at [Ruby Cluster](http://rubycluster.com) for [Jamendo Contest](http://developer.jamendo.com/contest)
