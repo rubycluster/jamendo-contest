@@ -20,3 +20,8 @@ define [
 
     showView: ->
       $(@el).slideDown('fast')
+
+    onBeforeRender: ->
+      if @options.hiddenOnce
+        @options.hiddenOnce = false
+        @hideView()
