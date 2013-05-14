@@ -10,7 +10,10 @@ define [
 
     el: '#location-title'
 
-    model: Area
-
     modelEvents:
       'change:position': 'render'
+
+    initialize: ->
+      super
+      @model ||= new Area
+      @

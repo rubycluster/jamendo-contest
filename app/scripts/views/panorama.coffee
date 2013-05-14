@@ -10,7 +10,7 @@ define [
 
     initialize: ->
       super
-      @model = new Panorama
+      @model ||= new Panorama
       @
 
     updateWithPosition: (value) ->

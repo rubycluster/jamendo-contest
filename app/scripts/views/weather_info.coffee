@@ -15,7 +15,7 @@ define [
 
     initialize: ->
       super
-      @model = new Weather
+      @model ||= new Weather
       @
 
     updateWithPosition: (value) ->

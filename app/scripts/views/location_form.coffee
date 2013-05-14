@@ -29,14 +29,13 @@ define [
       'click #geolocate': 'location:geolocate'
       'input #location': 'location:change'
 
-    model: Area
-
     modelEvents:
       'change:address': 'onAddressChange'
 
     initialize: ->
       @initTriggers()
       super
+      @model ||= new Area
       @
 
     initTriggers: ->
