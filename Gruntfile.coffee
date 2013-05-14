@@ -228,6 +228,21 @@ module.exports = (grunt) ->
           src: ["{,*/}*.js"]
         ]
 
+      fontsAwesome:
+        files: [
+          expand: true
+          dot: true
+          cwd: "<%= yeoman.app %>/components/font-awesome/build/assets/font-awesome/font"
+          dest: "<%= yeoman.tmp %>/fonts/font-awesome"
+          src: [
+            "*.eot"
+            "*.svg"
+            "*.ttf"
+            "*.woff"
+            "*.otf"
+          ]
+        ]
+
     symlink:
       js:
         dest: "<%= yeoman.tmp %>/components"
@@ -251,6 +266,7 @@ module.exports = (grunt) ->
       "clean:server"
       "coffee:dist"
       "haml"
+      "copy:fontsAwesome"
       "compass:server"
       "livereload-start"
       "connect:livereload"
@@ -281,6 +297,7 @@ module.exports = (grunt) ->
     "cssmin"
     "uglify"
     "copy"
+    "copy:fontsAwesome"
     "usemin"
   ]
 
