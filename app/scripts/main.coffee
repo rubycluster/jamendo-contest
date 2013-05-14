@@ -38,6 +38,19 @@ require.config
       exports: "jquery"
       deps: ["jquery"]
 
+    "vendor/jquery-modals":
+      deps: ["jquery"]
+    "vendor/jquery-popover":
+      deps: ["jquery"]
+    "vendor/jquery-responsiveTables":
+      deps: ["jquery"]
+    "vendor/jquery-responsiveText":
+      deps: ["jquery"]
+    "vendor/jquery-tooltip":
+      deps: ["jquery"]
+    "vendor/jquery.cycle2":
+      deps: ["jquery"]
+
     groundwork:
       exports: "GroundworkCSS"
       deps: [
