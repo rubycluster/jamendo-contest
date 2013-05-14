@@ -1,0 +1,4 @@
+.tile.active{class: @color}
+  %i{class: 'icon-' + @icon}
+  %strong
+    != @title

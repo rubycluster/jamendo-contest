@@ -1,27 +1,7 @@
 .callout.info
 
-  %h3
-    = @title
-    %small
-      Saturday, May 7
+  - if _.any @title
+    %h3
+      = @title
 
-  .tiles
-    .tile.active
-      %i.icon-bar-chart
-      %strong
-        10&deg;
-    .tile.active.blue
-      %i.icon-asterisk
-      %strong Cold
-    .tile.active.asphalt
-      %i.icon-cloud
-      %strong Cloudy
-    .tile.active.purple
-      %i.icon-umbrella
-      %strong Rain
-    -# .tile.active.orange
-      %i.icon-certificate
-      %strong Hot
-    -# .tile.active.yellow
-      %i.icon-circle-blank
-      %strong Clear
+  .tiles.row

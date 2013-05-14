@@ -5,8 +5,9 @@ define [
   'views/location_title'
   'views/panorama'
   'views/weather_info'
+  'views/weather_mood'
   'models/area'
-], (BaseLayout, template, LocationFormView, LocationTitleView, PanoramaView, WeatherInfoView, Area) ->
+], (BaseLayout, template, LocationFormView, LocationTitleView, PanoramaView, WeatherInfoView, WeatherMoodView, Area) ->
 
   class MainLayout extends BaseLayout
 
@@ -45,12 +46,15 @@ define [
       @views.location_title = new LocationTitleView
         model: @models.area
       @views.weather_info = new WeatherInfoView
+      @views.weather_mood = new WeatherMoodView
 
     initViewsEvents: ->
       @models.area.on 'change:position', (model, value) =>
         @views.weather_info.updateWithPosition value
       @models.area.on 'change:position', (model, value) =>
         @views.panorama.updateWithPosition value
+      @models.area.on 'change:position', (model, value) =>
+        @views.weather_mood.updateWithWeather()
 
     onRender: ->
       $('body')
@@ -60,3 +64,4 @@ define [
         '#location-form': @views.location_form
         '#location-title': @views.location_title
         '#weather-info': @views.weather_info
+        '#weather-mood': @views.weather_mood
