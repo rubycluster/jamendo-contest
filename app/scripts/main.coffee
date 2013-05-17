@@ -14,6 +14,7 @@ require.config
     backbone_marionette: "../components/backbone.marionette/lib/backbone.marionette"
     groundwork: "vendor/groundwork.all"
     moment: "../components/moment/moment"
+    mediaelement: "../components/mediaelement/build/mediaelement-and-player"
 
   shim:
 
@@ -33,6 +34,9 @@ require.config
     backbone_marionette:
       exports: "Backbone.Marionette"
       deps: ["backbone"]
+
+    mediaelement:
+      deps: ["jquery"]
 
     bootstrap:
       exports: "jquery"

@@ -5,5 +5,6 @@ define [
   'backbone_marionette'
   'groundwork'
   'moment'
+  'mediaelement'
 ], () ->
 
