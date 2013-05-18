@@ -25,6 +25,7 @@ define [
       xhr = options.xhr = Backbone.ajax params
       xhr.done (response, status, xhr) =>
         model.set model.parse(response)
+        model.trigger "parsed", model
       model.trigger "request", model, xhr, options
       xhr
 
