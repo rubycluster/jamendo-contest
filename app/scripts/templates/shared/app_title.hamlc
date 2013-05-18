@@ -1,2 +1,2 @@
 %h1.align-center.blue
-  Play Weather
+  = settings.global.app.title

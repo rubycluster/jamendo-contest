@@ -4,11 +4,12 @@ define [
   'backbone'
   'backbone_marionette'
   'templates'
+  'config/settings'
   'vent'
   'app_controller'
   'app_router'
   'app_deps'
-], (Backbone, Marionette, Templates, vent, AppController, AppRouter) ->
+], (Backbone, Marionette, Templates, settings, vent, AppController, AppRouter) ->
 
   Marionette.Renderer.render = (template, data) ->
     if typeof template is 'string' and typeof Templates[template] is 'function'
@@ -19,6 +20,8 @@ define [
       console.log '[marionette] template is not found:', template
 
   app = new Marionette.Application()
+
+  app.settings = settings
 
   app.vent = vent
 

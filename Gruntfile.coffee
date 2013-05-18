@@ -130,6 +130,7 @@ module.exports = (grunt) ->
           dependencies:
             h: "helpers/templates_helpers"
             t: "templates"
+            settings: "config/settings"
 
         files: [
           expand: true

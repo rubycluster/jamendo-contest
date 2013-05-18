@@ -1,0 +1,6 @@
+define [
+], () ->
+
+  keysSettings =
+    jamendo:
+      client_id: ''
