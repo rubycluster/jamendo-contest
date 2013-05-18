@@ -3,6 +3,6 @@ define [
   'models/weather_mood_item'
 ], (BaseCollection, WeatherMoodItem) ->
 
-  class WeatherMood extends BaseCollection
+  class WeatherMoodCollection extends BaseCollection
 
     model: WeatherMoodItem
