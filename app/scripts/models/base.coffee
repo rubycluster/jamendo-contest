@@ -20,3 +20,10 @@ define [
     parse: (response, options) ->
       parsed =
         response: response
+
+    sync: ->
+      if _.isFunction @syncer
+        sync = new @syncer
+        sync.process arguments
+      else
+        super

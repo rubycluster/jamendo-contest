@@ -8,8 +8,7 @@ define [
     defaults:
       response: {}
 
-    sync: ->
-      new WeatherSync arguments
+    syncer: WeatherSync
 
     serverAttrs: [
       'lat'

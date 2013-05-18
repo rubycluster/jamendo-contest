@@ -4,9 +4,6 @@ define [
 
   class BaseSync
 
-    constructor: ->
-      @sync.apply @, arguments[0]
-
     paramsDefaults:
       type: 'GET'
       contentType: 'application/json'
@@ -14,9 +11,11 @@ define [
       emulateHTTP: Backbone.emulateHTTP
       emulateJSON: Backbone.emulateJSON
 
-    prepareData: ->
     baseUrl: undefined
     dataDefaults: {}
+
+    process: ->
+      @sync.apply @, arguments[0]
 
     sync: (method, model, options = {}) ->
       params = $.extend true, {}, @paramsDefaults, options.params || {}
@@ -29,3 +28,5 @@ define [
       model.trigger "request", model, xhr, options
       xhr
 
+    prepareData: (data = {}) ->
+      _.clone data

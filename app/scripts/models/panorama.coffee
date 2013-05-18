@@ -9,8 +9,7 @@ define [
       response: {}
       url: undefined
 
-    sync: ->
-      new PanoramioSync arguments
+    syncer: PanoramioSync
 
     serverAttrs: [
       'lat'
