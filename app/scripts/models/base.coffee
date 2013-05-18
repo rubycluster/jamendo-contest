@@ -15,7 +15,27 @@ define [
     toServerJSON: ->
       json = _.clone @toJSON()
       if _.any @serverAttrs
-        json = _.pick json, @serverAttrs
+        mapAttrs = _(@serverAttrs).select (attr) ->
+          /{}$/.test attr
+        pickAttrs = _.difference @serverAttrs, mapAttrs
+
+        if _.any pickAttrs
+          json = _.pick json, pickAttrs
+        else
+          json = {}
+
+        if _.any mapAttrs
+          hash = _.chain(mapAttrs)
+            .map (attr) ->
+              attr.split(/{}$/)[0]
+            .reduce( (memo, attr) =>
+              delete json[attr]
+              _.extend memo, @get attr
+            , {})
+            .value()
+          _.extend json, hash
+
+        json
 
     parse: (response, options) ->
       parsed =
