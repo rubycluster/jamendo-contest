@@ -1,2 +1,5 @@
-%h1.align-center.blue
-  = settings.global.app.title
+- title = settings.global.app.title
+
+%h1.align-center.blue{title: title}
+  %span
+    = title
