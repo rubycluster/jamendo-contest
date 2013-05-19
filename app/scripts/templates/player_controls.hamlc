@@ -1,17 +1,24 @@
+.callout
+  %audio#player{controls: false}
+    - _.each @media_urls, (url, mediaType) ->
+      - mimeType = h.mediaMimeTypes()[mediaType]
+      - if _.any mimeType
+        %source{src: url, type: mimeType}
+
 .row
   %ul.button-list.large.align-center
     %li.mobile.one.fifth
-      %a
+      %a.button-backward
         .icon-step-backward
     %li.mobile.one.fifth
-      %a
+      %a.button-play
         .icon-play
     %li.mobile.one.fifth
-      %a
+      %a.button-pause
         .icon-pause
     %li.mobile.one.fifth
-      %a
+      %a.button-stop
         .icon-stop
     %li.mobile.one.fifth
-      %a
+      %a.button-forward
         .icon-step-forward

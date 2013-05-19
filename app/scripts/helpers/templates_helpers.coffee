@@ -17,4 +17,11 @@ define [
         .first(5)
         .value()
 
+    mediaMimeTypes: () ->
+      types =
+        mp31: 'audio/mpeg'
+        mp32: 'audio/mpeg'
+        ogg:  'audio/ogg'
+        flac: 'audio/ogg'
+
   TemplatesHelpers

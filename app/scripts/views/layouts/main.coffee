@@ -6,10 +6,17 @@ define [
   'views/panorama'
   'views/weather_info'
   'views/weather_mood'
+  'views/player_track'
+  'views/player_controls'
   'views/footer'
   'models/area'
   'models/weather'
-], (BaseLayout, template, LocationFormView, LocationTitleView, PanoramaView, WeatherInfoView, WeatherMoodView, FooterView, Area, Weather) ->
+  'models/weather_mood'
+  'models/track'
+], (BaseLayout, template, \
+    LocationFormView, LocationTitleView, PanoramaView, WeatherInfoView, \
+    WeatherMoodView, PlayerTrackView, PlayerControlsView, FooterView, \
+    Area, Weather, WeatherMood, Track) ->
 
   class MainLayout extends BaseLayout
 
@@ -41,6 +48,8 @@ define [
     initModels: ->
       @models.area = new Area
       @models.weather = new Weather
+      @models.weather_mood = new WeatherMood
+      @models.track = new Track
 
     initViews: ->
       @views.location_form = new LocationFormView
@@ -50,19 +59,27 @@ define [
         model: @models.area
       @views.weather_info = new WeatherInfoView
         model: @models.weather
+      @views.player_track = new PlayerTrackView
+        model: @models.track
+      @views.player_controls = new PlayerControlsView
+        model: @models.track
       @views.weather_mood = new WeatherMoodView
+        model: @models.weather_mood
       @views.footer = new FooterView
         hiddenOnce: true
 
     initViewsEvents: ->
       @views.location_form.on 'location:submit', =>
+        @views.player_controls.trigger 'player:stop'
         @hideInfoViews()
       @models.area.on 'change:position', (model, value) =>
         @views.weather_info.updateWithPosition value
       @models.area.on 'change:position', (model, value) =>
         @views.panorama.updateWithPosition value
-      @models.weather.on 'change:response', (model, value) =>
-        @views.weather_mood.updateWithWeather value
+      @models.weather.on 'parsed', (model) =>
+        @views.weather_mood.updateWithWeather model.get('response')
+      @models.weather_mood.on 'change:items', (model, value) =>
+        @models.track.updateWithMood(value).fetch()
       @models.area.on 'change:position', (model, value) =>
         @views.footer.showView()
 
@@ -75,6 +92,8 @@ define [
         '#location-title': @views.location_title
         '#weather-info': @views.weather_info
         '#weather-mood': @views.weather_mood
+        '#player-track': @views.player_track
+        '#player-controls': @views.player_controls
         '#footer': @views.footer
 
     hideInfoViews: ->
@@ -82,6 +101,8 @@ define [
         'location_title'
         'weather_mood'
         'weather_info'
+        'player_track'
+        'player_controls'
         'footer'
       ]).each (name) =>
         @views[name].hideView()

@@ -35,9 +35,27 @@ body
 
 #location-title
   margin-bottom: 1em
+  .callout
+    padding: 0.5em 1em
 
 #player-controls
   margin-bottom: 1em
+  .callout
+    padding:
+      top: 0
+      bottom: 0
+  .mejs-container
+    .mejs-controls
+      background: #1dabb8
+      .mejs-time
+        span
+          font-size: 120%
+      .mejs-time-rail
+        .mejs-time-current
+          background: #fff
+      .mejs-horizontal-volume-slider
+        .mejs-horizontal-volume-current
+          background: #fff
 
 #player-track
   margin-bottom: 1em
@@ -54,21 +72,27 @@ body
       line-height: 1.5em
       color: #fff
   .track
+    line-height: 1.1
     .tag
       float: right
       font-size: 80%
-      margin-top: 0.5em
+      margin:
+        top: 0.5em
+        left: 1em
+      border: #bce8f1 1px solid
       padding: 0.125em 0.5em
       background-color: #fff
     .title
-      margin-bottom: 0.25em
-      font-size: 200%
+      margin-bottom: 0.5em
+      font-size: 180%
+      color: #e67e22
     .artist
       margin-bottom: 0.5em
       font-size: 140%
+      color: #198d98
     .album
-      margin-bottom: 0.25em
-      font-size: 120%
+      margin-bottom: 0
+      font-size: 110%
 
 #weather-mood
   margin-bottom: 1em
