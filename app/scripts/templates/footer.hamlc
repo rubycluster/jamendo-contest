@@ -1,6 +1,6 @@
 .message.alert
   .small
-    %a{href: 'https://github.com/rubycluster/jamendo-contest', target: '_blank'}<
+    %a{href: 'https://github.com/rubycluster/playweather', target: '_blank'}<
       Developed
     by
     %a{href: 'http://vladalive.com', target: '_blank'}<
