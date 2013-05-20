@@ -39,7 +39,7 @@ module.exports = (grunt) ->
           "<%= yeoman.app %>/*.html"
           "{<%= yeoman.tmp %>,<%= yeoman.app %>}/styles/{,*/}*.css"
           "{<%= yeoman.tmp %>,<%= yeoman.app %>}/scripts/**/*.js"
-          "<%= yeoman.app %>/images/**/*.{png,jpg,jpeg,gif,webp}"
+          "<%= yeoman.app %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}"
         ]
         tasks: ["livereload"]
 
@@ -215,7 +215,7 @@ module.exports = (grunt) ->
           src: [
             "*.{ico,txt}"
             ".htaccess"
-            "images/{,*/}*.{webp,gif}"
+            "images/{,*/}*.{webp,gif,svg}"
             "fonts/*.*"
           ]
         ]
