@@ -15,6 +15,11 @@ require.config
     groundwork: "vendor/groundwork.all"
     moment: "../components/moment/moment"
     mediaelement: "../components/mediaelement/build/mediaelement-and-player"
+    i18n: "../components/requirejs-i18n/i18n"
+
+  config:
+    i18n:
+      locale: localStorage?.getItem('locale') || navigator?.language || 'en'
 
   shim:
 

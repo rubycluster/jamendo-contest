@@ -4,16 +4,16 @@
 
     %span.prefix.two.twelfth
       %label{for: 'location'}
-        Location
+        = l.form.location
 
-    .six.twelfth
-      %input#location{type: 'text', placeholder: 'Enter location (e.g. San Francisco)'}
+    .five.twelfth
+      %input#location{type: 'text', placeholder: l.form.enter_location}
 
-    %a#geolocate.one.twelfth.suffix{href: '#', title: 'My Location'}
+    %a#geolocate.one.twelfth.suffix{href: '#', title: l.form.my_location}
       %span.small-tablet-only
-        My Location
+        = l.form.my_location
       %i.icon-globe
 
-    %a#location-submit.button.orange.two.twelfth.skip-one{href: '#', title: 'Play'}
-      Play
+    %a#location-submit.button.orange.three.twelfth.skip-one{href: '#', title: l.form.play}
+      = l.form.play
       %i.icon-play-circle

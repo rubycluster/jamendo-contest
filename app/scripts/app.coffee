@@ -35,6 +35,9 @@ define [
       root: '/'
 
   app.addInitializer ->
+    app.vent.trigger 'locale:init'
+
+  app.addInitializer ->
     app.appController = new AppController()
     app.appRouter = new AppRouter
       controller: app.appController

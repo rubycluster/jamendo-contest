@@ -12,7 +12,8 @@
     "backbone": "~1.0.0",
     "moment": "~2.0.0",
     "font-awesome": "~3.1.1",
-    "mediaelement": "~2.11.3"
+    "mediaelement": "~2.11.3",
+    "requirejs-i18n": "~2.0.2"
   },
   "devDependencies": {}
 }

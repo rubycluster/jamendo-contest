@@ -11,16 +11,16 @@
       .track
         - if _.any @title
           .tag
-            track
+            = l.tags.track
           .title
             = @title
         - if _.any @artist
           .tag
-            artist
+            = l.tags.artist
           .artist
             = @artist
         - if _.any @album
           .tag
-            album
+            = l.tags.album
           .album
             = @album

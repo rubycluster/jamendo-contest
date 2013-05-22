@@ -136,6 +136,7 @@ module.exports = (grunt) ->
           dependencies:
             h: "helpers/templates_helpers"
             t: "templates"
+            l: "i18n!nls/locale"
             settings: "config/settings"
 
         files: [
