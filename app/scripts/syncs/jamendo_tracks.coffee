@@ -15,6 +15,7 @@ define [
       client_id: settings.keys.jamendo.client_id
       format: 'json'
       limit: 10
+      include: 'musicinfo'
       # lang: 'en'
       # order: undefined
       # speed: undefined
