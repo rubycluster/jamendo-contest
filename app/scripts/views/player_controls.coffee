@@ -48,7 +48,14 @@ define [
       if @isValidToShow()
         @showView()
         @initPlayer()
+        @fixPressButtonF()
         @player.api.play()
 
     isValidToShow: ->
       _.any @model.get('media_urls')
+
+    fixPressButtonF: ->
+      @player.api.enterFullScreen = undefined
+      setTimeout ->
+        $('body').trigger('click')
+      , 5000
