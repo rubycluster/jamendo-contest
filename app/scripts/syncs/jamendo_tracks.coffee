@@ -14,9 +14,8 @@ define [
     dataDefaults:
       client_id: settings.keys.jamendo.client_id
       format: 'json'
-      limit: 10
+      limit: 50
       include: 'musicinfo'
-      order: 'popularity_week_desc'
       # lang: 'en'
       # speed: undefined
       # namesearch: undefined
