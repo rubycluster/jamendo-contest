@@ -3,7 +3,8 @@
     .four.twelfth.small-tablet
       .cover.rounded-5
         - if _.any @cover_image_url
-          %img{src: @cover_image_url}
+          %a{href: @album_url, target: '_blank'}
+            %img{src: @cover_image_url}
         - else
           .img
             .icon-music
@@ -13,14 +14,17 @@
           .tag
             = l.tags.track
           .title
-            = @title
+            %a{href: @track_url, target: '_blank'}
+              = @title
         - if _.any @artist
           .tag
             = l.tags.artist
           .artist
-            = @artist
+            %a{href: @artist_url, target: '_blank'}
+              = @artist
         - if _.any @album
           .tag
             = l.tags.album
           .album
-            = @album
+            %a{href: @album_url, target: '_blank'}
+              = @album
