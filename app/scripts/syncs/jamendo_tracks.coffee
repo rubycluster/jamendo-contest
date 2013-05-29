@@ -16,8 +16,8 @@ define [
       format: 'json'
       limit: 10
       include: 'musicinfo'
+      order: 'popularity_week_desc'
       # lang: 'en'
-      # order: undefined
       # speed: undefined
       # namesearch: undefined
       # tags: undefined
