@@ -220,6 +220,7 @@ module.exports = (grunt) ->
           cwd: "<%= yeoman.app %>"
           dest: "<%= yeoman.dist %>"
           src: [
+            "manifest.appcache"
             "*.{ico,txt}"
             ".htaccess"
             "images/{,*/}*.{webp,gif,svg}"
