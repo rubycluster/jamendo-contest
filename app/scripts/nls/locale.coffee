@@ -9,4 +9,7 @@ define
       track: 'track'
       artist: 'artist'
       album: 'album'
+    share:
+      title: 'Weather Mood Music'
+      description: ''
   ru: true

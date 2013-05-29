@@ -1,0 +1,16 @@
+.callout.info
+  %a.button-show.button.small.orange{href: '#'}
+    %i.icon-bullhorn
+    share
+  %a.button-hide.button.small{href: '#'}
+    %i.icon-remove-sign
+    hide
+  %h3 Share:
+  .addthis_toolbox.addthis_default_style.addthis_32x32_style
+    %a.addthis_button_preferred_1
+    %a.addthis_button_preferred_2
+    %a.addthis_button_preferred_3
+    %a.addthis_button_preferred_4
+    %span.addthis_separator &nbsp;
+    %a.addthis_button_compact
+    %a.addthis_counter.addthis_pill_style

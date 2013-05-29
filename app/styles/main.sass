@@ -143,3 +143,38 @@ body
           color: #198d98
 
 #footer
+
+#bookmarks
+  .callout
+    overflow: hidden
+    padding:
+      top: 0.5em
+      bottom: 0.5em
+    h3
+      float: left
+      margin: 0.125em 1em 0 0
+    .addthis_toolbox
+      float: left
+    a.button-hide
+      float: right
+      margin: 0.5em 0 0 0
+    a.button-show
+      display: none
+  &.collapsed
+    display: inline
+    h3, .addthis_toolbox
+      display: none
+    .callout
+      display: inline
+      overflow: visible
+      padding: 0
+      border: 0 none
+      background: transparent
+      a.button-hide
+        display: none
+      a.button-show
+        display: block
+        position: relative
+        z-index: 1
+        float: right
+        margin: 1.25em 1.25em -5em

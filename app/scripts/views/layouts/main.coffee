@@ -9,13 +9,14 @@ define [
   'views/player_track'
   'views/player_controls'
   'views/footer'
+  'views/bookmarks'
   'models/area'
   'models/weather'
   'models/weather_mood'
   'models/track'
 ], (BaseLayout, template, \
     LocationFormView, LocationTitleView, PanoramaView, WeatherInfoView, \
-    WeatherMoodView, PlayerTrackView, PlayerControlsView, FooterView, \
+    WeatherMoodView, PlayerTrackView, PlayerControlsView, FooterView, BookmarksView, \
     Area, Weather, WeatherMood, Track) ->
 
   class MainLayout extends BaseLayout
@@ -28,6 +29,7 @@ define [
       wrapper: '#main-wrapper'
       container: '#main-container'
       location_form: '#location_form'
+      bookmarks: '#bookmarks'
       location_title: '#location-title'
       player_track: '#player-track'
       player_controls: '#player-controls'
@@ -55,6 +57,8 @@ define [
       @views.location_form = new LocationFormView
         model: @models.area
       @views.panorama = new PanoramaView
+      @views.bookmarks = new BookmarksView
+        model: @models.area
       @views.location_title = new LocationTitleView
         model: @models.area
       @views.weather_info = new WeatherInfoView
@@ -88,6 +92,7 @@ define [
       @setBackgroundBlank()
       @assignSubView
         '#location-form': @views.location_form
+        '#bookmarks': @views.bookmarks
         '#location-title': @views.location_title
         '#weather-info': @views.weather_info
         '#weather-mood': @views.weather_mood
@@ -98,6 +103,7 @@ define [
     hideInfoViews: ->
       _([
         'location_title'
+        'bookmarks'
         'weather_mood'
         'weather_info'
         'player_track'
