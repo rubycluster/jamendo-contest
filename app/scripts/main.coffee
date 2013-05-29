@@ -10,7 +10,6 @@ require.config
     jquery: "../components/jquery/jquery"
     backbone: "../components/backbone/backbone"
     underscore: "../components/underscore/underscore"
-    bootstrap: "vendor/bootstrap"
     backbone_marionette: "../components/backbone.marionette/lib/backbone.marionette"
     groundwork: "vendor/groundwork.all"
     moment: "../components/moment/moment"
@@ -41,10 +40,6 @@ require.config
       deps: ["backbone"]
 
     mediaelement:
-      deps: ["jquery"]
-
-    bootstrap:
-      exports: "jquery"
       deps: ["jquery"]
 
     "vendor/jquery-modals":
