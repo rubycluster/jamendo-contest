@@ -72,6 +72,7 @@ define [
       @views.location_form.on 'location:submit', =>
         @views.player_controls.trigger 'player:stop'
         @hideInfoViews()
+        @setBackgroundBlank()
       @models.area.on 'change:position', (model, value) =>
         @views.weather_info.updateWithPosition value
       @models.area.on 'change:position', (model, value) =>
@@ -84,9 +85,7 @@ define [
         @views.footer.showView()
 
     onRender: ->
-      $('body')
-        .removeClass('cover')
-        .addClass('blank')
+      @setBackgroundBlank()
       @assignSubView
         '#location-form': @views.location_form
         '#location-title': @views.location_title
@@ -106,3 +105,9 @@ define [
         'footer'
       ]).each (name) =>
         @views[name].hideView()
+
+    setBackgroundBlank: ->
+      $('body')
+        .removeAttr('style')
+        .removeClass('cover')
+        .addClass('blank')
