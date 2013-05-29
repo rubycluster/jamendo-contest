@@ -24,6 +24,9 @@ define [
         lng: value.lng
       @model.fetch()
 
+    onBeforeRender: ->
+      @hideView()
+
     onRender: ->
       @isValidToShow() && @showView()
 
