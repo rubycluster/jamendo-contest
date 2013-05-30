@@ -1,6 +1,7 @@
 define [
   'underscore'
-], (_) ->
+  'objects/weather_mood_items'
+], (_, weatherMoodItems) ->
 
   class WeatherToVisual
 
@@ -132,3 +133,19 @@ define [
           result = key
       if _.any(result)
         @result.push result
+
+    collectionItems: (value) ->
+      value ||= @convert().result
+      _.chain(value)
+        .map( (i) ->
+          if _.isObject(i)
+            key = _.keys(i)[0]
+            value = i[key]
+            item = weatherMoodItems[key]
+            item.set 'title', value
+            item
+          else
+            weatherMoodItems[i]
+        )
+        .compact()
+        .value()

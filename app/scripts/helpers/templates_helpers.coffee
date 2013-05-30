@@ -9,10 +9,12 @@ define [
   # Add HAML helpers here available from templates
   _.extend TemplatesHelpers,
 
-    filterWeatherDays: (list) ->
+    filterWeatherDays: (list, dayTime) ->
+      delta = {day: 0, night: 4}[dayTime]
+      console.log delta
       _.chain(list)
         .filter( (item, index) ->
-          (index + 8) % 8 == 0
+          (index + delta + 8) % 8 == 0
         )
         .first(5)
         .value()

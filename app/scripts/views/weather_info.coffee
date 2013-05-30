@@ -14,6 +14,7 @@ define [
       'change:response': 'render'
 
     initialize: ->
+      window.info = @
       super
       @model ||= new Weather
       @

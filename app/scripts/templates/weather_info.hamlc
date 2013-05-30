@@ -1,6 +1,10 @@
+- WeatherToVisual = require 'helpers/weather_to_visual'
+- templateWeatherMoodItem = require('templates/weather_mood_item')
+
 - if _.any @response
 
-  - days = h.filterWeatherDays @response.list
+  - days = h.filterWeatherDays @response.list, 'day'
+  - nights = h.filterWeatherDays @response.list, 'night'
 
   %table
     %colgroup
@@ -15,7 +19,19 @@
           %th
             = moment(day.dt * 1000).format('dddd')
     %tbody
+      - for week in [days, nights]
+        %tr
+          - for day in week
+            %td.large.temp
+              %span{title: moment(day.dt * 1000).format('LLLL')}
+                = Math.round day.main.temp
       %tr
         - for day in days
-          %td.large.temp
-            = Math.round day.main.temp
+          %td
+            - converter = new WeatherToVisual day
+            - items = converter.collectionItems()
+            .tiles
+              - _.chain(items).rest().each (item, index) ->
+                - attrs = item.toJSON()
+                - attrs['color'] = attrs['color'] + ' small square'
+                != templateWeatherMoodItem attrs
