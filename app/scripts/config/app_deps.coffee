@@ -6,6 +6,7 @@ define [
   'groundwork'
   'moment'
   'mediaelement'
+  'store'
   'config/locale_deps'
 ], () ->
 

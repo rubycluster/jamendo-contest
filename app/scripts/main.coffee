@@ -15,6 +15,8 @@ require.config
     moment: "../components/moment/moment"
     mediaelement: "../components/mediaelement/build/mediaelement-and-player"
     i18n: "../components/requirejs-i18n/i18n"
+    store_original: "../components/store/store"
+    store: "helpers/store"
 
   config:
     i18n:
@@ -66,6 +68,10 @@ require.config
         "vendor/jquery-tooltip"
         "vendor/jquery.cycle2"
       ]
+
+    store:
+      exports: "store"
+      deps: ["underscore"]
 
     app:
       deps: [ 'app_deps' ]
