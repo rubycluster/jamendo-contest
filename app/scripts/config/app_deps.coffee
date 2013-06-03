@@ -7,6 +7,7 @@ define [
   'moment'
   'mediaelement'
   'store'
+  'md5'
   'config/locale_deps'
 ], () ->
 

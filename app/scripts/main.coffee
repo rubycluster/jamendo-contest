@@ -17,6 +17,7 @@ require.config
     i18n: "../components/requirejs-i18n/i18n"
     store_original: "../components/store/store"
     store: "helpers/store"
+    md5: "vendor/md5"
 
   config:
     i18n:
@@ -72,6 +73,9 @@ require.config
     store:
       exports: "store"
       deps: ["underscore"]
+
+    md5:
+      exports: "md5"
 
     app:
       deps: [ 'app_deps' ]
