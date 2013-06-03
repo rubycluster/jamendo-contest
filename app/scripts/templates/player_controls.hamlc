@@ -8,7 +8,7 @@
 .row
   %ul.button-list.large.align-center
     %li.mobile.one.fifth
-      %a.button-backward
+      %a.button-backward.disabled
         .icon-step-backward
     %li.mobile.one.fifth
       %a.button-play
@@ -17,8 +17,8 @@
       %a.button-pause
         .icon-pause
     %li.mobile.one.fifth
-      %a.button-stop
+      %a.button-stop.disabled
         .icon-stop
     %li.mobile.one.fifth
-      %a.button-forward
+      %a.button-forward.disabled
         .icon-step-forward
