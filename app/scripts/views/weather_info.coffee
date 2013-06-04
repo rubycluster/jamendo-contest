@@ -26,6 +26,9 @@ define [
       @model.fetch()
 
     onBeforeRender: ->
+      $(@el).on 'click', '.tile', (e) ->
+        e.stopPropagation()
+        false
       @hideView()
 
     onRender: ->
