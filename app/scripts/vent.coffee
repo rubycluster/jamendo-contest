@@ -1,7 +1,8 @@
 define [
   'backbone'
   'backbone_marionette'
-], (Backbone, Marionette) ->
+  'syncs/base'
+], (Backbone, Marionette, BaseSync) ->
 
   vent = new Backbone.Wreqr.EventAggregator()
 
@@ -16,5 +17,8 @@ define [
   vent.on 'locale:set', (code, refresh = false) ->
     localStorage?.setItem 'locale', code
     location.reload()  if refresh
+
+  vent.on 'cache:ajax:drop', (scope) ->
+    BaseSync.prototype.dropCache scope
 
   vent

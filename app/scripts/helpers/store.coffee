@@ -21,12 +21,16 @@ define [
     get: (key) ->
       info = @getOriginal key
       if _.isObject(info) and info.exp? and info.time?
-        if info.exp >= new Date().getTime() - info.time
+        if not @isExpired key
           info.val
         else
           @remove key
           null
       else
         info
+
+    isExpired: (key) ->
+      info = @getOriginal key
+      info.exp < new Date().getTime() - info.time
 
   store

@@ -8,6 +8,7 @@ define [
   class BaseSync
 
     cacheTime: settings.global.cache.ajax.time
+    cachePrefix: 'cache-ajax-'
 
     paramsDefaults:
       type: 'GET'
@@ -68,8 +69,14 @@ define [
 
     cacheKey: (params) ->
       hash = md5 JSON.stringify(params)
-      [
-        'cache'
-        'ajax'
-        hash
-      ].join('-')
+      @cachePrefix + hash
+
+    dropCache: (scope = 'expired') ->
+      re = new RegExp('^'+ @cachePrefix + '\\w*$')
+      _.reduce(store.getAll(), (memo, value, key) ->
+        if re.test(key)
+          if scope is 'expired' and store.isExpired(key) or scope is 'all'
+            memo.push key
+            store.remove key
+        memo
+      , [])
