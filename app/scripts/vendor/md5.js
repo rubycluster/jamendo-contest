@@ -1,3 +1,5 @@
+(function (undefined) {
+
 function md5cycle(x, k) {
 var a = x[0], b = x[1], c = x[2], d = x[3];
 
@@ -182,3 +184,12 @@ msw = (x >> 16) + (y >> 16) + (lsw >> 16);
 return (msw << 16) | (lsw & 0xFFFF);
 }
 }
+
+/*global define:false */
+if (typeof define === "function" && define.amd) {
+  define("md5", [], function () {
+    return md5;
+  });
+}
+
+}).call(this);

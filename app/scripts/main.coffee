@@ -74,9 +74,6 @@ require.config
       exports: "store"
       deps: ["underscore"]
 
-    md5:
-      exports: "md5"
-
     app:
       deps: [ 'app_deps' ]
 
