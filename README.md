@@ -37,6 +37,41 @@ Weather mood expressed in music.
 * [Google Geocoding API](http://developers.google.com/maps/documentation/geocoding/)
 * [HTML5 Geolocation API](http://www.w3schools.com/html/html5_geolocation.asp)
 
+# Application Usage
+
+## Requirements
+
+* [Node.js](http://nodejs.org/)
+
+## Install
+
+    npm install -g yo grunt-cli bower
+    git clone git://github.com/rubycluster/playweather.git
+    cd playweather
+    npm install
+    bower install
+
+## Configure
+
+Copy example config files and add your own keys and values:
+
+    cp app/scripts/config/settings/keys.coffee.example \
+       app/scripts/config/settings/keys.coffee
+    cp grunt-settings.json.example \
+       grunt-settings.json
+
+## Start development server
+
+    grunt server --force
+
+Application is now available at:
+
+    http://localhost:9000/
+
+## Build application
+
+    grunt build
+
 # License
 
 The MIT License (MIT)
