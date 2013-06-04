@@ -7,3 +7,4 @@ app/components
 .tmp
 app/scripts/config/settings/keys.coffee
 grunt-settings.json
+app/index.html
