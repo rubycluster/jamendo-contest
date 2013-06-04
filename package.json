@@ -27,7 +27,9 @@
     "grunt-symlink": "~0.4.0",
     "grunt-haml": "~0.4.0",
     "grunt-phonegap-build": "0.0.6",
-    "grunt-zipstream": "~0.2.2"
+    "grunt-zipstream": "~0.2.2",
+    "grunt-preprocess": "~2.3.0",
+    "grunt-env": "~0.4.0"
   },
   "engines": {
     "node": ">=0.8.0"

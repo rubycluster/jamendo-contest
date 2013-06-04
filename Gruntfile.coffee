@@ -23,6 +23,25 @@ module.exports = (grunt) ->
 
   grunt.initConfig
     yeoman: yeomanConfig
+
+    env:
+      options:
+        DEBUG: true
+        APP_CACHE: false
+      dev:
+        NODE_ENV: 'development'
+      test:
+        NODE_ENV: 'test'
+      build:
+        NODE_ENV: 'production'
+        DEBUG: false
+        APP_CACHE: true
+
+    preprocess:
+      html:
+        src: 'app/index.html.pre'
+        dest: 'app/index.html'
+
     watch:
       coffee:
         files: ["<%= yeoman.app %>/scripts/**/*.coffee"]
@@ -302,7 +321,9 @@ module.exports = (grunt) ->
       "connect:dist:keepalive"
     ])  if target is "dist"
     grunt.task.run [
+      "env:dev"
       "clean:server"
+      "preprocess:html"
       "coffee:dist"
       "haml"
       "copy:fontsAwesomeServer"
@@ -314,7 +335,9 @@ module.exports = (grunt) ->
     ]
 
   grunt.registerTask "test", [
+    "env:test"
     "clean:server"
+    "preprocess:html"
     "coffee"
     "compass"
     "connect:test"
@@ -322,7 +345,9 @@ module.exports = (grunt) ->
   ]
 
   grunt.registerTask "build", [
+    "env:build"
     "clean:dist"
+    "preprocess:html"
     "coffee"
     "haml"
     "copy:js"
