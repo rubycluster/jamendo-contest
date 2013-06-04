@@ -3,8 +3,7 @@ define [
   'templates/location_form'
   'models/area'
   'apis/geolocation'
-  'apis/reverse_geocoding'
-], (BaseItemView, template, Area, GeolocationAPI, ReverseGeocodingAPI) ->
+], (BaseItemView, template, Area, GeolocationAPI) ->
 
   class LocationFormView extends BaseItemView
 
@@ -33,10 +32,14 @@ define [
       'change:address': 'onAddressChange'
 
     initialize: ->
+      @initBindings()
       @initTriggers()
       super
       @model ||= new Area
       @
+
+    initBindings: ->
+      _.bindAll @, 'locationReverseGeocoding'
 
     initTriggers: ->
       @on 'location:submit', @setSpinner
@@ -51,18 +54,18 @@ define [
     locationGeolocate: ->
       api = new GeolocationAPI()
       api.geolocate()
-        .done (position) =>
-          @locationReverseGeocoding position
-        .fail (message) =>
-          alert message
+        .done(@locationReverseGeocoding)
+        .fail(alert)
 
     locationReverseGeocoding: (position) ->
-      api = new ReverseGeocodingAPI
-        data: position
-      api.request().done =>
-        @model.unset 'address',
-          silent: true
-        @model.set 'address', api.result
+      @model.unset 'address'
+      @model.unset 'position',
+        silent: true
+      @model.set 'position', position,
+        silent: true
+      @model.fetch({silent: true})
+        .done =>
+          @model.trigger 'change:address', @model, @model.get('address')
 
     setSpinner: (spin = true) ->
       el = @ui.geolocate.find('i')
@@ -80,22 +83,16 @@ define [
       @locationFix(address)
 
     locationFix: (address) ->
-      api = new ReverseGeocodingAPI
-        data:
+      dfd = @model.fetch
+        attrs:
           address: address
-      dfr = api.request()
-      dfr.done =>
-        result = api.result
-        if _.any result
+      dfd.done (response) =>
+        if _.any response.results
           @setValidForm true
-          @model.set 'address', result
-          position = api.response[0].results[0].geometry.location
-          @model.set 'position', position
         else
           @setValidForm false
         @setSpinner false
-        result
-      dfr
+      dfd
 
     setValidForm: (valid = true) ->
       if valid
