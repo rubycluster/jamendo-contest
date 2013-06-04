@@ -81,7 +81,7 @@ define [
         @views.weather_info.updateWithPosition value
       @models.area.on 'change:position', (model, value) =>
         @views.panorama.updateWithPosition value
-      @models.weather.on 'parsed', (model) =>
+      @models.weather.on 'sync', (model) =>
         @views.weather_mood.updateWithWeather model.get('response')
       @models.weather_mood.on 'change:items', (model, value) =>
         @models.track.updateWithMood(value).fetch()

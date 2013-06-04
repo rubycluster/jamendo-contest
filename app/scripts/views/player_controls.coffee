@@ -15,7 +15,7 @@ define [
       audio: '#player'
 
     modelEvents:
-      'parsed': 'render'
+      'sync': 'render'
 
     triggers:
       'click .button-play': 'player:play'

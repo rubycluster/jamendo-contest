@@ -11,7 +11,7 @@ define [
     el: '#player-track'
 
     modelEvents:
-      'parsed': 'render'
+      'sync': 'render'
 
     initialize: ->
       super
