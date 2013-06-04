@@ -15,7 +15,7 @@ require.config
     moment: "../components/moment/moment"
     mediaelement: "../components/mediaelement/build/mediaelement-and-player"
     i18n: "../components/requirejs-i18n/i18n"
-    store_original: "../components/store/store"
+    store_original: "../components/store.js/store"
     store: "helpers/store"
     md5: "vendor/md5"
 
