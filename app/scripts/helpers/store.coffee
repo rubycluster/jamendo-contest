@@ -10,7 +10,7 @@ define [
   _.extend store,
 
     set: (key, val, exp = undefined) ->
-      if exp?
+      if exp? and exp > 0
         @setOriginal key,
           time: new Date().getTime()
           exp: exp
