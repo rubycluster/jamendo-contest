@@ -47,3 +47,13 @@ define [
         sync.process arguments
       else
         super
+
+    fetch: (options = {}) ->
+      if _.isFunction @syncer
+        options = _.clone options
+        method = options.method || 'read'
+        if _.isUndefined options.parse
+          options.parse = true
+        @sync method, @, options
+      else
+        super
