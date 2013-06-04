@@ -1,15 +1,17 @@
 define [
   'backbone'
-], (Backbone) ->
+  'store'
+  'config/settings'
+  'md5'
+], (Backbone, store, settings, md5) ->
 
   class BaseSync
 
+    cacheTime: settings.global.cache.ajax.time
+
     paramsDefaults:
       type: 'GET'
-      contentType: 'application/json'
       dataType: 'jsonp'
-      emulateHTTP: Backbone.emulateHTTP
-      emulateJSON: Backbone.emulateJSON
 
     baseUrl: undefined
     dataDefaults: {}
@@ -18,16 +20,56 @@ define [
       @sync.apply @, arguments[0]
 
     sync: (method, model, options = {}) ->
+      set_options = _(options).omit 'params', 'attrs'
       params = $.extend true, {}, @paramsDefaults, options.params || {}
       params.url = @baseUrl
       data = $.extend true, {}, @dataDefaults, (options.attrs || model.toServerJSON(options))
       params.data = @prepareData data
-      xhr = options.xhr = Backbone.ajax params
+      xhr = options.xhr = @cachedAjax params
       xhr.done (response, status, xhr) =>
-        model.set model.parse(response)
-        model.trigger "parsed", model
-      model.trigger "request", model, xhr, options
+        model.set model.parse(response), set_options
+        if options.success
+          options.success @, response, set_options
+        model.trigger 'sync', model, response, set_options
+      model.trigger 'request', model, xhr, options
       xhr
 
     prepareData: (data = {}) ->
-      _.clone data
+      compactFn = (memo, value, key) ->
+        if not _.isEmpty(value) || _.isNumber(value)
+          memo[key] = value
+        memo
+
+      _.chain(data)
+        .clone()
+        .reduce(compactFn, {})
+        .value()
+
+    cachedAjax: (params) ->
+      if @cacheTime > 0
+        info = store.get @cacheKey(params)
+        info? && @deferredCache(info) || @deferredAjax(params)
+      else
+        @deferredAjax(params)
+
+    deferredCache: (info) ->
+      dfd = $.Deferred()
+      dfd.resolve info.response, info.status, dfd
+      dfd
+
+    deferredAjax: (params) ->
+      dfd = Backbone.ajax params
+      dfd.done (response, status, xhr) =>
+        store.set @cacheKey(params),
+          response: response
+          status: status
+        , @cacheTime
+      dfd
+
+    cacheKey: (params) ->
+      hash = md5 JSON.stringify(params)
+      [
+        'cache'
+        'ajax'
+        hash
+      ].join('-')
