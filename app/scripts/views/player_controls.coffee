@@ -59,3 +59,6 @@ define [
       setTimeout ->
         $('body').trigger('click')
       , 1000
+
+    onBeforeHide: ->
+      $('audio').attr 'src', ''

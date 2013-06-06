@@ -16,7 +16,9 @@ define [
       , this
 
     hideView: ->
+      @onBeforeHide()
       $(@el).hide()
+      @onHide()
 
     showView: ->
       $(@el).slideDown('fast')
@@ -25,3 +27,7 @@ define [
       if @options.hiddenOnce
         @options.hiddenOnce = false
         @hideView()
+
+    onBeforeHide: ->
+
+    onHide: ->
