@@ -2,3 +2,6 @@
   .callout
     %h2
       = @address
+      - if _.any @country
+        %small
+          = '(' + @country + ')'
