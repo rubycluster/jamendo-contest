@@ -59,13 +59,13 @@ define [
 
     locationReverseGeocoding: (position) ->
       @model.unset 'address'
-      @model.unset 'position',
+      @model.touch 'position', position
+      dfd = @model.fetch
         silent: true
-      @model.set 'position', position,
-        silent: true
-      @model.fetch({silent: true})
-        .done =>
-          @model.trigger 'change:address', @model, @model.get('address')
+      dfd.done =>
+        @model.touch 'address'
+        @model.touch 'position'
+      dfd
 
     setSpinner: (spin = true) ->
       el = @ui.geolocate.find('i')
@@ -83,10 +83,13 @@ define [
       @locationFix(address)
 
     locationFix: (address) ->
+      @model.unset 'position',
+        silent: true
       dfd = @model.fetch
-        attrs:
-          address: address
+        silent: true
       dfd.done (response) =>
+        @model.touch 'address'
+        @model.touch 'position'
         if _.any response.results
           @setValidForm true
         else
