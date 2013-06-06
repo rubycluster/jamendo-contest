@@ -4,6 +4,16 @@
 
 Weather mood expressed in music.
 
+## How it works
+
+* Visit [Play Weather](http://playweather.info/)
+* Enter your location into the text field above
+* ... or press the button with a globe icon to find your current geo location
+* Press 'Play' button to request a weather forecast
+* Listen to the music expressing the weather today
+* Overview the weather for the next 5 days
+* Share it with friends!
+
 ## Application Concept
 
 * One-page application
