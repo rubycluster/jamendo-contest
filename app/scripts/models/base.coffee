@@ -57,3 +57,10 @@ define [
         @sync method, @, options
       else
         super
+
+    touch: (attr, value = undefined) ->
+      return unless attr?
+      value ||= @get attr
+      @unset attr,
+        silent: true
+      @set attr, value
