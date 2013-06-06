@@ -12,7 +12,7 @@
     %a#geolocate.one.twelfth.suffix{href: '#', title: l.form.my_location}
       %span.small-tablet-only
         = l.form.my_location
-      %i.icon-globe
+      %i.icon-globe.ajax-spinner
 
     %a#location-submit.button.orange.three.twelfth.skip-one{href: '#', title: l.form.play}
       = l.form.play

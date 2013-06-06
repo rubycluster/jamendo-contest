@@ -42,7 +42,6 @@ define [
       _.bindAll @, 'locationReverseGeocoding'
 
     initTriggers: ->
-      @on 'location:submit', @setSpinner
       @on 'location:submit', _.throttle(@locationSubmit, @options.inputDelay)
       @on 'location:geolocate', _.throttle(@locationGeolocate, @options.geolocateDelay)
       @on 'location:change', @locationChange
@@ -67,13 +66,6 @@ define [
         @model.touch 'position'
       dfd
 
-    setSpinner: (spin = true) ->
-      el = @ui.geolocate.find('i')
-      if spin
-        el.addClass('spin')
-      else
-        el.removeClass('spin')
-
     triggerGeolocate: ->
       $(@ui.geolocate).trigger 'click'
 
@@ -94,7 +86,6 @@ define [
           @setValidForm true
         else
           @setValidForm false
-        @setSpinner false
       dfd
 
     setValidForm: (valid = true) ->

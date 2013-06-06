@@ -41,6 +41,15 @@ define [
     app.vent.trigger 'cache:ajax:drop', 'expired'
 
   app.addInitializer ->
+    $(document)
+      .on('ajaxStart', ->
+        $('.ajax-spinner').addClass 'spin'
+      )
+      .on('ajaxStop', ->
+        $('.ajax-spinner').removeClass 'spin'
+      )
+
+  app.addInitializer ->
     app.appController = new AppController()
     app.appRouter = new AppRouter
       controller: app.appController
