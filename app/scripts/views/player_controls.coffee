@@ -58,4 +58,4 @@ define [
       @player.api.enterFullScreen = undefined
       setTimeout ->
         $('body').trigger('click')
-      , 5000
+      , 1000
