@@ -31,6 +31,8 @@ define [
 
     isExpired: (key) ->
       info = @getOriginal key
-      info.exp? and info.time? and (info.exp < new Date().getTime() - info.time)
+      return null  unless info?
+      info.exp? and info.time? and \
+        (info.exp < new Date().getTime() - info.time)
 
   store
