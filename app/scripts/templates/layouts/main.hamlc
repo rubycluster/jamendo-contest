@@ -5,6 +5,7 @@
   #main-container.six.twelfths.skip-three.padded.bordered.rounded-5
 
     #location-form
+    #help
     #bookmarks
     #location-title
     #player-track

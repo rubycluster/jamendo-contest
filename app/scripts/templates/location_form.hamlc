@@ -14,6 +14,11 @@
         = l.form.my_location
       %i.icon-globe.ajax-spinner
 
-    %a#location-submit.button.orange.three.twelfth.skip-one{href: '#', title: l.form.play}
+    %a#link-help.one.twelfth{href: '#', title: l.form.help}
+      %i.icon-question-sign
+      %span.small-tablet-only
+        = l.form.help
+
+    %a#location-submit.button.orange.three.twelfth{href: '#', title: l.form.play}
       = l.form.play
       %i.icon-play-circle

@@ -31,3 +31,6 @@ define [
     onBeforeHide: ->
 
     onHide: ->
+
+    isHidden: ->
+      $(@el).filter(':hidden').length > 0

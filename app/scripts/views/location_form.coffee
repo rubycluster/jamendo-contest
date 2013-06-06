@@ -3,7 +3,8 @@ define [
   'templates/location_form'
   'models/area'
   'apis/geolocation'
-], (BaseItemView, template, Area, GeolocationAPI) ->
+  'vent'
+], (BaseItemView, template, Area, GeolocationAPI, vent) ->
 
   class LocationFormView extends BaseItemView
 
@@ -27,6 +28,7 @@ define [
       'click #location-submit': 'location:submit'
       'click #geolocate': 'location:geolocate'
       'input #location': 'location:change'
+      'click #link-help': 'help:toggle'
 
     modelEvents:
       'change:address': 'onAddressChange'
@@ -45,6 +47,8 @@ define [
       @on 'location:submit', _.throttle(@locationSubmit, @options.inputDelay)
       @on 'location:geolocate', _.throttle(@locationGeolocate, @options.geolocateDelay)
       @on 'location:change', @locationChange
+      @on 'help:toggle', ->
+        vent.trigger 'help:toggle'
 
     onRender: ->
       @triggerGeolocate()
