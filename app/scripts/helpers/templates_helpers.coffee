@@ -11,7 +11,6 @@ define [
 
     filterWeatherDays: (list, dayTime) ->
       delta = {day: 0, night: 4}[dayTime]
-      console.log delta
       _.chain(list)
         .filter( (item, index) ->
           (index + delta + 8) % 8 == 0
