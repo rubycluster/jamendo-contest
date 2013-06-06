@@ -26,13 +26,13 @@ define [
       params.url = @baseUrl
       data = $.extend true, {}, @dataDefaults, (options.attrs || model.toServerJSON(options))
       params.data = @prepareData data
+      model.trigger 'request', model, xhr, options
       xhr = options.xhr = @cachedAjax params
       xhr.done (response, status, xhr) =>
         model.set model.parse(response), set_options
         if options.success
           options.success @, response, set_options
         model.trigger 'sync', model, response, set_options
-      model.trigger 'request', model, xhr, options
       xhr
 
     prepareData: (data = {}) ->
@@ -55,7 +55,9 @@ define [
 
     deferredCache: (info) ->
       dfd = $.Deferred()
-      dfd.resolve info.response, info.status, dfd
+      setTimeout ->
+        dfd.resolve info.response, info.status, dfd
+      , 500
       dfd
 
     deferredAjax: (params) ->
