@@ -7,6 +7,8 @@ define [
 
     baseUrl: 'http://api.jamendo.com/v3.0/tracks/'
 
+    cacheTime: settings.global.cache.ajax.jamendo_tracks.time
+
     paramsDefaults: $.extend(true, {}, @paramsDefaults, {
       dataType: 'json'
     })

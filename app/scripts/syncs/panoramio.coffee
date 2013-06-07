@@ -1,10 +1,13 @@
 define [
   'syncs/base'
-], (BaseSync) ->
+  'config/settings'
+], (BaseSync, settings) ->
 
   class PanoramioSync extends BaseSync
 
     baseUrl: 'http://www.panoramio.com/map/get_panoramas.php'
+
+    cacheTime: settings.global.cache.ajax.panoramio.time
 
     dataDefaults:
       set: 'public'

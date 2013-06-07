@@ -7,7 +7,7 @@ define [
 
   class BaseSync
 
-    cacheTime: settings.global.cache.ajax.time
+    cacheTime: settings.global.cache.ajax.default.time
     cachePrefix: 'cache-ajax-'
 
     paramsDefaults:

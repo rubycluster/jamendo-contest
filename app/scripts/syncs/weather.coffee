@@ -1,10 +1,13 @@
 define [
   'syncs/base'
-], (BaseSync) ->
+  'config/settings'
+], (BaseSync, settings) ->
 
   class WeatherSync extends BaseSync
 
     baseUrl: 'http://api.openweathermap.org/data/2.5/forecast'
+
+    cacheTime: settings.global.cache.ajax.weather.time
 
     dataDefaults:
       lang: 'en'

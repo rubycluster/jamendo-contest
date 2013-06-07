@@ -7,5 +7,13 @@ define [
       url: 'http://playweather.info'
     cache:
       ajax:
-        # time: 0
-        time: 30 * 60 * 1000
+        default:
+          time: 1000 * 60 * 30
+        geocoding:
+          time: 1000 * 60 * 60 * 6
+        jamendo_tracks:
+          time: 1000 * 60 * 60 * 3
+        panoramio:
+          time: 1000 * 60 * 60 * 6
+        weather:
+          time: 1000 * 60 * 30
