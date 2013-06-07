@@ -62,12 +62,12 @@ define [
 
     locationReverseGeocoding: (position) ->
       @model.unset 'address'
-      @model.touch 'position', position
       dfd = @model.fetch
+        attrs:
+          position: position
         silent: true
       dfd.done =>
         @model.touch 'address'
-        @model.touch 'position'
       dfd
 
     triggerGeolocate: ->
