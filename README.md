@@ -4,6 +4,12 @@
 
 Weather mood expressed in music.
 
+## Screenshots
+
+![screenshot-01](doc/screenshots/playweather-ss-01-a.jpg)
+
+![screenshot-02](doc/screenshots/playweather-ss-02-a.jpg)
+
 ## How it works
 
 * Visit [Play Weather](http://playweather.info/)
