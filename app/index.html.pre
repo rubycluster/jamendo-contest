@@ -7,7 +7,7 @@
         <title>Play Weather</title>
         <meta name="description" content="Hear the weather in music">
         <meta name="viewport" content="width=device-width">
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="shortcut icon" href="/favicon.ico">
         <!-- build:css styles/main.css -->
         <link rel="stylesheet" href="styles/groundwork.css">
         <link rel="stylesheet" href="styles/mediaelementplayer.css">
