@@ -12,6 +12,12 @@ define [
         'duration'
         'volume'
       ]
+      mode: 'auto'
+      plugins: [
+        'flash'
+        'silverlight'
+      ]
+      pluginPath: '/images/meplayer/'
 
     constructor: ->
       @initialize.apply @, arguments

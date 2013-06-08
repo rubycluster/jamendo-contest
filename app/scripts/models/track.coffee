@@ -42,6 +42,7 @@ define [
         cover_image_url: result.album_image
         media_urls:
           mp31: result.audio
+          ogg: result.audio.replace /mp31/, 'ogg1'
         track_url: [ @serverRoot, 'track', result.id ].join('/')
         artist_url: [ @serverRoot, 'artist', result.artist_id ].join('/')
         album_url: [ @serverRoot, 'album', result.album_id ].join('/')

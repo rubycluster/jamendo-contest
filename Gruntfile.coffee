@@ -243,6 +243,7 @@ module.exports = (grunt) ->
             "*.{ico,txt}"
             ".htaccess"
             "images/{,*/}*.{webp,gif,svg}"
+            "images/{,*/}*.{swf,xap}"
             "fonts/*.*"
           ]
         ]

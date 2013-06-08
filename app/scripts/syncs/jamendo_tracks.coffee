@@ -18,6 +18,7 @@ define [
       format: 'json'
       limit: 50
       include: 'musicinfo'
+      audioformat: 'mp31'
       # lang: 'en'
       # speed: undefined
       # namesearch: undefined
