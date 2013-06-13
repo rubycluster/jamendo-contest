@@ -47,11 +47,25 @@ body
 
 #location-form
   margin-bottom: 1em
+  #location
+    color: #666
+    border-radius: 0
+    &:focus
+      outline: none
+      color: #333
+      border-top-color: #999
+      border-bottom-color: #999
   a.suffix
     text-decoration: none
   .valid, .invalid
     i.ajax-spinner
       color: white
+  .valid
+    #location
+      color: #468847
+  .invalid
+    #location
+      color: #b94a48
   #geolocate
     padding:
       top: 0
@@ -65,8 +79,19 @@ body
     display: block
     text-decoration: none
     padding: 0.5em
-    i
-      display: block
+  @media only screen and (max-width:767px)
+    #link-help
+      background-color: #eee
+    #link-help, #location
+      text-align: center
+    .prefix, .suffix
+      left: 0
+    .prefix
+      border-radius: 4px 4px 0 0
+    #location, #geolocate
+      border-radius: 0
+    #location-submit
+      border-radius: 0 0 4px 4px
 
 #location-title
   margin-bottom: 1em
@@ -106,6 +131,9 @@ body
       font-size: 8em
       line-height: 1.5em
       color: #fff
+  @media only screen and (max-width:767px)
+    .cover
+      margin-bottom: 1em
   .track
     line-height: 1.1
     .tag
@@ -147,6 +175,13 @@ body
         left: 0.25em
         right: 0.25em
       cursor: inherit
+  @media only screen and (max-width:767px)
+    .tiles
+      .tile
+        border-width: 3px
+        i
+          font-size: 1.8em
+          margin: 0
 
 #weather-info
   margin-bottom: 1em
@@ -154,10 +189,13 @@ body
     colgroup
       col
         width: 20%
+    th, td
+      padding: 5px
     th
       text-transform: uppercase
       font-weight: normal
       text-align: center
+      word-break: break-all
     td
       text-align: center
     tbody
@@ -169,7 +207,7 @@ body
       display: block
       cursor: inherit
       border-width: 1px
-      margin-bottom: 1em
+      margin: 0.25em 0
 
 #footer
 
@@ -184,6 +222,9 @@ body
       margin: 0.125em 1em 0 0
     .addthis_toolbox
       float: left
+    @media only screen and (max-width:767px)
+      .addthis_toolbox
+        clear: both
     a.button-hide
       float: right
       margin: 0.5em 0 0 0
@@ -220,3 +261,9 @@ body
   @media only screen and (min-width:767px)
     .text
       padding-left: 1em
+  @media only screen and (max-width:767px)
+    .button
+      margin-bottom: 1em
+    .text
+      br
+        display: none

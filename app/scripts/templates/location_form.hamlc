@@ -15,9 +15,9 @@
       %i.icon-globe.ajax-spinner
 
     %a#link-help.one.twelfth{href: '#', title: l.form.help}
-      %i.icon-question-sign
       %span.small-tablet-only
         = l.form.help
+      %i.icon-question-sign
 
     %a#location-submit.button.orange.three.twelfth{href: '#', title: l.form.play}
       = l.form.play
