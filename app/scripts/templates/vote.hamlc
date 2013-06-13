@@ -1,0 +1,32 @@
+- contestEndDate = '2013-06-24'
+- now = moment()
+- if now.isBefore contestEndDate
+  - timeLeft = moment(contestEndDate).from(now)
+  .callout.info
+    .row
+      %a.button.two.twelfths{href: 'http://developer.jamendo.com/contest/app/8', target: '_blank'}
+        %i.icon-star.icon-2x
+        %br
+        VOTE!
+      .text.ten.twelfths
+        %p
+          %a{href: 'http://developer.jamendo.com/contest', target: '_blank'}<
+            Jamendo app contest
+          %a{href: 'http://developer.jamendo.com/contest/apps', target: '_blank'}<
+            voting
+          began.
+          Do you like this application idea?
+          %br/
+          Please
+          %a{href: 'http://developer.jamendo.com/contest/app/8', target: '_blank'}<
+            vote for it
+          before 23rd of June!
+          Sign up at&nbsp;
+          %a{href: 'http://www.jamendo.com/en/login/signup', target: '_blank'}><
+            Jamendo
+          , it's free.
+          %br/
+          Contest ends&nbsp;
+          %strong><
+            = timeLeft
+          \.

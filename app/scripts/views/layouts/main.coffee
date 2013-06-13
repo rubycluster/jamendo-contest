@@ -11,13 +11,15 @@ define [
   'views/footer'
   'views/bookmarks'
   'views/help'
+  'views/vote'
   'models/area'
   'models/weather'
   'models/weather_mood'
   'models/track'
 ], (BaseLayout, template, \
     LocationFormView, LocationTitleView, PanoramaView, WeatherInfoView, \
-    WeatherMoodView, PlayerTrackView, PlayerControlsView, FooterView, BookmarksView, HelpView, \
+    WeatherMoodView, PlayerTrackView, PlayerControlsView, \
+    FooterView, BookmarksView, HelpView, VoteView, \
     Area, Weather, WeatherMood, Track) ->
 
   class MainLayout extends BaseLayout
@@ -38,6 +40,7 @@ define [
       weather_mood: '#weather-mood'
       weather_info: '#weather-info'
       footer: '#footer'
+      vote: '#vote'
 
     models: {}
     views: {}
@@ -74,6 +77,7 @@ define [
         model: @models.weather_mood
       @views.footer = new FooterView
         hiddenOnce: true
+      @views.vote = new VoteView
 
     initViewsEvents: ->
       @views.location_form.on 'location:submit', =>
@@ -90,6 +94,9 @@ define [
         @models.track.updateWithMood(value).fetch()
       @models.area.on 'change:position', (model, value) =>
         @views.footer.showView()
+      @views.player_controls.on 'player:init', =>
+        fn = _.bind @views.vote.showViewIfValid, @views.vote
+        _.delay fn, 3000
 
     onRender: ->
       @setBackgroundBlank()
@@ -103,6 +110,7 @@ define [
         '#player-track': @views.player_track
         '#player-controls': @views.player_controls
         '#footer': @views.footer
+        '#vote': @views.vote
 
     hideInfoViews: ->
       _([
@@ -114,6 +122,7 @@ define [
         'player_track'
         'player_controls'
         'footer'
+        'vote'
       ]).each (name) =>
         @views[name].hideView()
 

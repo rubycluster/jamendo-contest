@@ -40,6 +40,7 @@ define [
 
     initPlayer: ->
       @player = new Player @ui.audio
+      @trigger 'player:init', @player
 
     onBeforeRender: ->
       @hideView()

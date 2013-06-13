@@ -1,6 +1,7 @@
 #main-wrapper.row.padded
 
   != require('templates/shared/app_title')()
+  #vote.six.twelfths.skip-three
 
   #main-container.six.twelfths.skip-three.padded.bordered.rounded-5
 

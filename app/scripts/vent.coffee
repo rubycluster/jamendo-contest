@@ -6,6 +6,8 @@ define [
 
   vent = new Backbone.Wreqr.EventAggregator()
 
+  vent.data = {}
+
   # vent.on "all", ->
   #   console.log arguments
 
