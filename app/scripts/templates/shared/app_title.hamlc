@@ -1,5 +1,6 @@
 - title = settings.global.app.title
 
 %h1.align-center.blue{title: title}
-  %span
-    = title
+  %a{href: '/'}
+    %span
+      = title
