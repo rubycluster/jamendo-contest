@@ -4,7 +4,9 @@ define [
   'templates/weather_mood'
   'collections/weather_mood'
   'models/weather_mood'
-], (BaseCompositeView, WeatherMoodItemView, template, WeatherMoodCollection, WeatherMood) ->
+  'moment'
+  'i18n!nls/locale'
+], (BaseCompositeView, WeatherMoodItemView, template, WeatherMoodCollection, WeatherMood, moment, locale) ->
 
   class WeatherMoodView extends BaseCompositeView
 
@@ -32,9 +34,15 @@ define [
       @showView()
 
     updateWithWeather: (weatherResponse) ->
+      day = weatherResponse.list[0]
+      human_date = moment(day.dt * 1000).format('LL')
+      title = [
+        locale.weather_info.today
+        human_date
+      ].join(', ')
       @collection.reset()
-      @model.set 'title', 'Today'
-      @model.generateItems weatherResponse.list[0]
+      @model.set 'title', title
+      @model.generateItems day
 
     onBeforeRender: ->
       @hideView()

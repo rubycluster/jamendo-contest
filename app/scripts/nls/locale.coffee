@@ -44,4 +44,6 @@ define
           <p>PlayWeather is not responsible for the content provided by external websites.</p>
           <p>PlayWeather is beta version. Some issues still may occur.</p>
           '''
+    weather_info:
+      today: 'Today'
   ru: true
