@@ -13,6 +13,7 @@ define
     share:
       title: 'Weather Mood Music'
       description: ''
+      share: 'Share'
     help:
       tabs: ['how_it_works', 'credits']
       links:
@@ -71,5 +72,8 @@ define
       haze: 'Haze'
       dust: 'Dust'
       fog: 'Fog'
+    buttons:
+      hide: 'Hide'
+      share: 'Share'
 
   ru: true
