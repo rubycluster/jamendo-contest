@@ -1,0 +1,5 @@
+%select#locales
+  - _.each l.locales, (value, key) ->
+    - selected = key == localStorage.getItem('locale')
+    %option{value: key, selected: selected}
+      = value

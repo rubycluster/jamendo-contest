@@ -1,5 +1,6 @@
 .message.alert
-  .small
+  != require('templates/shared/locales')()
+  .copyright.small
     %a{href: 'https://github.com/rubycluster/playweather', target: '_blank'}<
       Developed
     by

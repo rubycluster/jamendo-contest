@@ -75,5 +75,7 @@ define
     buttons:
       hide: 'Hide'
       share: 'Share'
-
+    locales:
+      en: 'English'
+      ru: 'Русский'
   ru: true
