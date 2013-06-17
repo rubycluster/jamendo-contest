@@ -9,7 +9,7 @@ define [
     root: ->
       console.log '[navigate] root'
       # new HomePageView()
-      new MainLayout()
+      app.layout = new MainLayout
 
     missing: ->
       console.log '[navigate] missing'

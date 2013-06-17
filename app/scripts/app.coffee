@@ -27,15 +27,19 @@ define [
 
   app.templates = Templates
 
+  app.layout = undefined
+
   app.on "initialize:before", (options) =>
 
   app.on "initialize:after", (options) =>
-    Backbone.history.start
-      pushState: false
-      root: '/'
+    setTimeout ->
+      Backbone.history.start
+        pushState: false
+        root: '/'
+    , 1000
 
   app.addInitializer ->
-    app.vent.trigger 'locale:init'
+    app.vent.trigger 'settings:init'
 
   app.addInitializer ->
     app.vent.trigger 'cache:ajax:drop', 'expired'
