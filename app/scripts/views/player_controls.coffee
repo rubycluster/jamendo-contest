@@ -63,3 +63,6 @@ define [
 
     onBeforeHide: ->
       $('audio').attr 'src', ''
+
+    updateWithMood: (value) ->
+      @model.updateWithMood(value).fetch()

@@ -7,7 +7,12 @@ define [
 
     options:
       temperature:
-        units: 'C'
+        c:
+          units: 'C'
+          formula: (value) -> value
+        f:
+          units: 'F'
+          formula: (value) -> value * 9/5 + 32
 
     map:
 
@@ -82,11 +87,7 @@ define [
 
     setTemperature: ->
       temperature = Math.round @weather.main.temp
-      formatted = [
-        temperature
-        '&deg;'
-        @options.temperature.units
-      ].join ''
+      formatted = @formatTemperature temperature, app.settings.temp_units
       @result.push
         'temperature': formatted
 
@@ -149,3 +150,10 @@ define [
         )
         .compact()
         .value()
+
+    formatTemperature: (value, units) ->
+      [
+        Math.round @options.temperature[units].formula(value)
+        '&deg;'
+        @options.temperature[units].units
+      ].join ''

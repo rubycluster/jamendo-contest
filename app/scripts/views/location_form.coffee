@@ -32,6 +32,7 @@ define [
 
     modelEvents:
       'change:address': 'onAddressChange'
+      'change:position': 'onPositionChange'
 
     initialize: ->
       @initBindings()
@@ -109,3 +110,6 @@ define [
 
     onAddressChange: (model, value) ->
       $(@ui.input).val value
+
+    onPositionChange: (model, value) ->
+      @trigger 'location:change:position', model, value

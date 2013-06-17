@@ -25,4 +25,19 @@ define [
         ogg:  'audio/ogg'
         flac: 'audio/ogg'
 
+    temperatureWithUnits: (value) ->
+      units = app.settings.temp_units
+      options =
+        c:
+          units: 'C'
+          formula: (value) -> value
+        f:
+          units: 'F'
+          formula: (value) -> value * 9/5 + 32
+      [
+        Math.round options[units].formula(value)
+        '&deg;'
+        options[units].units
+      ].join ''
+
   TemplatesHelpers

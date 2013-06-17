@@ -1,5 +1,6 @@
 .message.alert
   != require('templates/shared/locales')()
+  != require('templates/shared/select_temp_units')()
   .copyright.small
     %a{href: 'https://github.com/rubycluster/playweather', target: '_blank'}<
       Developed

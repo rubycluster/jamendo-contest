@@ -9,14 +9,18 @@ define [
     defaults:
       title: undefined
       items: []
+      weather: {}
+
+    initialize: ->
+      super
+      @on 'change:weather', @generateItems
+      @
 
     collectionItems: ->
       converter = new WeatherToVisual
       converter.collectionItems @get('items')
 
-    generateItems: (weather = {}) ->
+    generateItems: (model, weather = {}) ->
       converter = new WeatherToVisual weather
       items = converter.convert().result
-      @unset 'items'
-        silent: true
-      @set 'items', items
+      @touch 'items', items

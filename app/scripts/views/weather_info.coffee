@@ -12,9 +12,9 @@ define [
 
     modelEvents:
       'change:response': 'render'
+      'sync': 'onSync'
 
     initialize: ->
-      window.info = @
       super
       @model ||= new Weather
       @
@@ -36,3 +36,6 @@ define [
 
     isValidToShow: ->
       _.any @model.get('response')
+
+    onSync: (model) ->
+      @trigger 'weather:change', model

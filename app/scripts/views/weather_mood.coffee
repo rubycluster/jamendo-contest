@@ -32,6 +32,7 @@ define [
       @hideView()
       @collection.set model.get('collectionItems')
       @showView()
+      @trigger 'weather_mood:change:items', model, value
 
     updateWithWeather: (weatherResponse) ->
       day = weatherResponse.list[0]
@@ -42,7 +43,7 @@ define [
       ].join(', ')
       @collection.reset()
       @model.set 'title', title
-      @model.generateItems day
+      @model.set 'weather', day
 
     onBeforeRender: ->
       @hideView()
@@ -51,4 +52,4 @@ define [
       @isValidToShow() && @showView()
 
     isValidToShow: ->
-      _.any @model.get('title') and _.any @model.get('items')
+      _.any(@model.get('title')) and _.any(@model.get('items'))

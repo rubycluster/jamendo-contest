@@ -1,0 +1,6 @@
+- map = {c: 'C', f: 'F'}
+%select#temp_units
+  - _.each map, (value, key) ->
+    - selected = key == localStorage.getItem('temp_units')
+    %option{value: key, selected: selected}
+      = value

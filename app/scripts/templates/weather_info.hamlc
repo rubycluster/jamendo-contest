@@ -24,7 +24,7 @@
           - for day in week
             %td.large.temp
               %span{title: moment(day.dt * 1000).format('LLLL')}
-                = Math.round day.main.temp
+                != h.temperatureWithUnits day.main.temp
       %tr
         - for day in days
           %td
