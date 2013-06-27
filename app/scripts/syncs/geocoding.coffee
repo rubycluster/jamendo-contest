@@ -5,7 +5,7 @@ define [
 
   class GeocodingSync extends BaseSync
 
-    baseUrl: 'http://maps.googleapis.com/maps/api/geocode/json'
+    baseUrl: 'https://maps.googleapis.com/maps/api/geocode/json'
 
     cacheTime: settings.global.cache.ajax.geocoding.time
 
