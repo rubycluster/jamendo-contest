@@ -1,6 +1,6 @@
 {
   "name": "playweather",
-  "version": "0.6.7",
+  "version": "0.6.8",
   "dependencies": {
     "jquery": "~1.9.1",
     "requirejs": "~2.1.6",
