@@ -318,7 +318,7 @@ module.exports = (grunt) ->
   grunt.registerTask "server", (target) ->
     return grunt.task.run([
       "build"
-      "open"
+      # "open"
       "connect:dist:keepalive"
     ])  if target is "dist"
     grunt.task.run [
@@ -331,7 +331,7 @@ module.exports = (grunt) ->
       "compass:server"
       "livereload-start"
       "connect:livereload"
-      "open"
+      # "open"
       "watch"
     ]
 
