@@ -4,12 +4,13 @@ define [
   'backbone'
   'backbone_marionette'
   'templates'
+  'config/global_handlers'
   'config/settings'
   'vent'
   'app_controller'
   'app_router'
   'app_deps'
-], (Backbone, Marionette, Templates, settings, vent, AppController, AppRouter) ->
+], (Backbone, Marionette, Templates, GlobalHandlers, settings, vent, AppController, AppRouter) ->
 
   Marionette.Renderer.render = (template, data) ->
     if typeof template is 'string' and typeof Templates[template] is 'function'
@@ -37,6 +38,9 @@ define [
         pushState: false
         root: '/'
     , 1000
+
+  app.addInitializer ->
+    GlobalHandlers.init(app)
 
   app.addInitializer ->
     app.vent.trigger 'settings:init'

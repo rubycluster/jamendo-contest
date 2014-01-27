@@ -47,6 +47,7 @@
 
         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-51a61ce1315c2d53"></script>
 
+        <script src="cordova.js"></script>
         <!-- build:js scripts/main.js -->
         <script data-main="scripts/main" src="components/requirejs/require.js"></script>
         <!-- endbuild -->
