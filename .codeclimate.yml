@@ -1,0 +1,18 @@
+languages:
+  JavaScript: true
+
+engines:
+  eslint:
+    enabled: true
+  coffeelint:
+    enabled: true
+  csslint:
+    enabled: true
+
+exclude_paths:
+  - "test/**/*"
+  - "app/scripts/vendor/**/*"
+  - "app/styles/groundwork.css"
+  - "app/styles/mediaelementplayer.css"
+  - "app/scripts/nls/**/*.coffee"
+  - "Gruntfile.coffee"
