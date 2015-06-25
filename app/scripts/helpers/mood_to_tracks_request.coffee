@@ -221,16 +221,16 @@ define [
       ruleApplies = (rule, items) =>
         result = false
         if rule.condition?.type == 'and'
-          result = _.all rule.condition.keys, (key) =>
+          result = _.all rule.condition.keys, (key) ->
             keyMatches key, items
-          symbolic = _.all rule.condition.keys, (key) =>
+          symbolic = _.all rule.condition.keys, (key) ->
             /^:/.test key
           if result and symbolic
             _.each rule.condition.keys, (key) =>
               orig_key = key.match(/^:(.*)$/)[1]
               @found = _(@found).without orig_key
         else if rule.condition?.type == 'or'
-          result = _.any rule.condition.keys, (key) =>
+          result = _.any rule.condition.keys, (key) ->
             keyMatches key, items
         else
           result = _.include items, rule.key

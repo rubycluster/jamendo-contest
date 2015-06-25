@@ -6,7 +6,15 @@ define [
   'models/weather_mood'
   'moment'
   'i18n!nls/locale'
-], (BaseCompositeView, WeatherMoodItemView, template, WeatherMoodCollection, WeatherMood, moment, locale) ->
+], (
+  BaseCompositeView
+  WeatherMoodItemView
+  template
+  WeatherMoodCollection
+  WeatherMood
+  moment
+  locale
+) ->
 
   class WeatherMoodView extends BaseCompositeView
 

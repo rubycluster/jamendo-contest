@@ -22,9 +22,11 @@ define [
 
     sync: (method, model, options = {}) ->
       set_options = _(options).omit 'params', 'attrs'
-      params = $.extend true, {}, @paramsDefaults, options.params || {}
+      params = $.extend true, {},
+        @paramsDefaults, options.params || {}
       params.url = @baseUrl
-      data = $.extend true, {}, @dataDefaults, (options.attrs || model.toServerJSON(options))
+      data = $.extend true, {}, @dataDefaults,
+        (options.attrs || model.toServerJSON(options))
       params.data = @prepareData data
       model.trigger 'request', model, xhr, options
       xhr = options.xhr = @cachedAjax params

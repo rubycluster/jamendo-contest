@@ -22,6 +22,7 @@ define [
           false
 
         .on 'backbutton', ->
-          navigator.notification.confirm 'Do you really want to exit?', ( (buttonIndex) ->
+          msg = 'Do you really want to exit?'
+          navigator.notification.confirm msg, ( (buttonIndex) ->
             navigator.app.exitApp()  if buttonIndex is 2
           ), 'Exit', ['Cancel', 'OK']

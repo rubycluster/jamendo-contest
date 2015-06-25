@@ -10,7 +10,16 @@ define [
   'app_controller'
   'app_router'
   'app_deps'
-], (Backbone, Marionette, Templates, GlobalHandlers, settings, vent, AppController, AppRouter) ->
+], (
+  Backbone
+  Marionette
+  Templates
+  GlobalHandlers
+  settings
+  vent
+  AppController
+  AppRouter
+) ->
 
   Marionette.Renderer.render = (template, data) ->
     if typeof template is 'string' and typeof Templates[template] is 'function'
@@ -30,9 +39,9 @@ define [
 
   app.layout = undefined
 
-  app.on "initialize:before", (options) =>
+  app.on "initialize:before", (options) ->
 
-  app.on "initialize:after", (options) =>
+  app.on "initialize:after", (options) ->
     setTimeout ->
       Backbone.history.start
         pushState: false

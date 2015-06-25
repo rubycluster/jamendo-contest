@@ -45,8 +45,10 @@ define [
       _.bindAll @, 'locationReverseGeocoding'
 
     initTriggers: ->
-      @on 'location:submit', _.throttle(@locationSubmit, @options.inputDelay)
-      @on 'location:geolocate', _.throttle(@locationGeolocate, @options.geolocateDelay)
+      @on 'location:submit',
+        _.throttle(@locationSubmit, @options.inputDelay)
+      @on 'location:geolocate',
+        _.throttle(@locationGeolocate, @options.geolocateDelay)
       @on 'location:change', @locationChange
       @on 'help:toggle', ->
         vent.trigger 'help:toggle'
