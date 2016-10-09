@@ -3,7 +3,12 @@ define [
   'templates/vote'
   'vent'
   'moment'
-], (BaseItemView, template, vent, moment) ->
+], (
+  BaseItemView
+  template
+  vent
+  moment
+) ->
 
   class VoteView extends BaseItemView
 
@@ -35,7 +40,7 @@ define [
     isInContest: ->
       contestEndDate = '2013-06-24'
       now = moment()
-      now.isBefore contestEndDate
+      now.isBefore(contestEndDate)
 
     isShown: ->
       vent.data.vote_is_shown > 3

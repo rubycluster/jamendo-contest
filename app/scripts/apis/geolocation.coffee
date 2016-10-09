@@ -1,6 +1,8 @@
 define [
   'apis/base'
-], (BaseAPI) ->
+], (
+  BaseAPI
+) ->
 
   class GeolocationAPI extends BaseAPI
 
@@ -13,7 +15,7 @@ define [
             lng: result.coords.longitude
           dfr.resolve position
         , ->
-          dfr.reject "Geolocation service failed."
+          dfr.reject('Geolocation service failed.')
       else
-        dfr.reject "Browser doesn't support geolocation."
+        dfr.reject('Browser doesn\'t support geolocation.')
       dfr

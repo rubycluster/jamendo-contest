@@ -1,5 +1,7 @@
 define [
   'backbone'
-], (Backbone) ->
+], (
+  Backbone
+) ->
 
   class BaseCollection extends Backbone.Collection

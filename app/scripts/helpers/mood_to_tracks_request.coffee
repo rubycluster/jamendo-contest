@@ -1,6 +1,8 @@
 define [
   'underscore'
-], (_) ->
+], (
+  _
+) ->
 
   class MoodToTracksRequest
 
@@ -194,10 +196,10 @@ define [
       ]
 
     constructor: ->
-      @initialize.apply @, arguments
+      @initialize.apply(@, arguments)
 
     initialize: (items = {}) ->
-      @items = _.clone items
+      @items = _.clone(items)
       @result = {}
       @
 
@@ -214,44 +216,44 @@ define [
       keyMatches = (key, items) =>
         if /^:/.test key
           orig_key = key.match(/^:(.*)$/)[1]
-          _.include @found, orig_key
+          _.include(@found, orig_key)
         else
-          _.include items, key
+          _.include(items, key)
 
       ruleApplies = (rule, items) =>
         result = false
         if rule.condition?.type == 'and'
           result = _.all rule.condition.keys, (key) ->
-            keyMatches key, items
+            keyMatches(key, items)
           symbolic = _.all rule.condition.keys, (key) ->
-            /^:/.test key
+            /^:/.test(key)
           if result and symbolic
             _.each rule.condition.keys, (key) =>
               orig_key = key.match(/^:(.*)$/)[1]
-              @found = _(@found).without orig_key
+              @found = _(@found).without(orig_key)
         else if rule.condition?.type == 'or'
           result = _.any rule.condition.keys, (key) ->
-            keyMatches key, items
+            keyMatches(key, items)
         else
-          result = _.include items, rule.key
+          result = _.include(items, rule.key)
         result
 
       ruleApply = (rule, items) =>
         if ruleApplies rule, items
-          @found.push rule.key
+          @found.push(rule.key)
 
       @found = []
 
       _.each @mapVisualOrder, (category) =>
         _.each @mapVisual[category], (rule) =>
-          ruleApply rule, @items, @found
+          ruleApply(rule, @items, @found)
 
-      key = _.first @found
+      key = _.first(@found)
 
       @setResult key
 
     setResult: (key = 'default', sub_key = undefined) ->
-      map = _.clone @mapRequest
+      map = _.clone(@mapRequest)
       key = 'default'  unless map[key]?
       sub_key ||= _.chain(map[key]).keys().shuffle().first().value()
       result = map[key][sub_key]

@@ -1,6 +1,6 @@
 define [
   'mediaelement'
-], () ->
+], ->
 
   class Player
 
@@ -20,11 +20,11 @@ define [
       pluginPath: '/images/meplayer/'
 
     constructor: ->
-      @initialize.apply @, arguments
+      @initialize.apply(@, arguments)
 
     initialize: (el, settings = {}) ->
       @el = el
       @settings = settings
-      _.defaults @settings, @defaultSettings
-      @api = new MediaElementPlayer @el, @settings
+      _.defaults(@settings, @defaultSettings)
+      @api = new MediaElementPlayer(@el, @settings)
       @

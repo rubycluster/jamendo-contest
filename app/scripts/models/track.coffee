@@ -2,7 +2,11 @@ define [
   'models/base'
   'syncs/jamendo_tracks'
   'helpers/mood_to_tracks_request'
-], (BaseModel, JamendoTracksSync, MoodToTracksRequest) ->
+], (
+  BaseModel
+  JamendoTracksSync
+  MoodToTracksRequest
+) ->
 
   class Track extends BaseModel
 
@@ -30,8 +34,8 @@ define [
     parse: (response, options) ->
       parsed = super
       result = _(response.results).chain().shuffle().first().value()
-      if _.any result
-        @parseAttributesFromResult parsed, result
+      if _.anyr(result)
+        @parseAttributesFromResult(parsed, result)
       parsed
 
     parseAttributesFromResult: (parsed, result) ->
@@ -42,7 +46,7 @@ define [
         cover_image_url: result.album_image
         media_urls:
           mp31: result.audio
-          ogg: result.audio.replace /mp31/, 'ogg1'
+          ogg: result.audio.replace(/mp31/, 'ogg1')
         track_url: [ @serverRoot, 'track', result.id ].join('/')
         artist_url: [ @serverRoot, 'artist', result.artist_id ].join('/')
         album_url: [ @serverRoot, 'album', result.album_id ].join('/')

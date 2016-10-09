@@ -17,12 +17,26 @@ define [
   'models/weather_mood'
   'models/track'
   'vent'
-], (BaseLayout, template, \
-    LocationFormView, LocationTitleView, PanoramaView, WeatherInfoView, \
-    WeatherMoodView, PlayerTrackView, PlayerControlsView, \
-    FooterView, BookmarksView, HelpView, VoteView, \
-    Area, Weather, WeatherMood, Track, \
-    vent) ->
+], (
+  BaseLayout
+  template
+  LocationFormView
+  LocationTitleView
+  PanoramaView
+  WeatherInfoView
+  WeatherMoodView
+  PlayerTrackView
+  PlayerControlsView
+  FooterView
+  BookmarksView
+  HelpView
+  VoteView
+  Area
+  Weather
+  WeatherMood
+  Track
+  vent
+) ->
 
   class MainLayout extends BaseLayout
 
@@ -89,20 +103,20 @@ define [
       @views.location_form.on 'location:change:position', (model, value) =>
         @views.footer.showView()
       @views.location_form.on 'location:change:position', (model, value) =>
-        @views.weather_info.updateWithPosition value
+        @views.weather_info.updateWithPosition(value)
       @views.location_form.on 'location:change:position', (model, value) =>
-        @views.panorama.updateWithPosition value
+        @views.panorama.updateWithPosition(value)
       @views.weather_info.on 'weather:change', (model) =>
-        @views.weather_mood.updateWithWeather model.get('response')
+        @views.weather_mood.updateWithWeather(model.get('response'))
       @views.weather_mood.on 'weather_mood:change:items', (model, value) =>
-        @views.player_controls.updateWithMood value
+        @views.player_controls.updateWithMood(value)
       @views.player_controls.on 'player:init', =>
-        fn = _.bind @views.vote.showViewIfValid, @views.vote
-        _.delay fn, 3000
+        fn = _.bind(@views.vote.showViewIfValid, @views.vote)
+        _.delay(fn, 3000)
       vent.on 'temp_units:set', =>
         $('body').scrollTop 0
         @views.weather_info.render()
-        @views.weather_mood.model.touch 'weather'
+        @views.weather_mood.model.touch('weather')
         @views.weather_mood.render()
 
     onRender: ->

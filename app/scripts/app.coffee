@@ -39,9 +39,9 @@ define [
 
   app.layout = undefined
 
-  app.on "initialize:before", (options) ->
+  app.on 'initialize:before', (options) ->
 
-  app.on "initialize:after", (options) ->
+  app.on 'initialize:after', (options) ->
     setTimeout ->
       Backbone.history.start
         pushState: false
@@ -52,18 +52,18 @@ define [
     GlobalHandlers.init(app)
 
   app.addInitializer ->
-    app.vent.trigger 'settings:init'
+    app.vent.trigger('settings:init')
 
   app.addInitializer ->
-    app.vent.trigger 'cache:ajax:drop', 'expired'
+    app.vent.trigger('cache:ajax:drop', 'expired')
 
   app.addInitializer ->
     $(document)
       .on('ajaxStart', ->
-        $('.ajax-spinner').addClass 'spin'
+        $('.ajax-spinner').addClass('spin')
       )
       .on('ajaxStop', ->
-        $('.ajax-spinner').removeClass 'spin'
+        $('.ajax-spinner').removeClass('spin')
       )
 
   app.addInitializer ->

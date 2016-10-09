@@ -1,7 +1,10 @@
 define [
   'models/base'
   'syncs/weather'
-], (BaseModel, WeatherSync) ->
+], (
+  BaseModel
+  WeatherSync
+) ->
 
   class Weather extends BaseModel
 

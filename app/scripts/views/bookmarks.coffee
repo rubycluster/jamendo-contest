@@ -4,7 +4,13 @@ define [
   'models/area'
   'config/settings'
   'i18n!nls/locale'
-], (BaseItemView, template, Area, settings, locale) ->
+], (
+  BaseItemView
+  template
+  Area
+  settings
+  locale
+) ->
 
   class BookmarksView extends BaseItemView
 
@@ -35,7 +41,7 @@ define [
       @
 
     initTriggers: ->
-      @on 'bookmarks:toggle', @toggleView
+      @on('bookmarks:toggle', @toggleView)
 
     onBeforeRender: ->
       @hideView()
@@ -44,13 +50,13 @@ define [
       @isValidToShow() && @showView()
 
     showView: ->
-      ui = $.extend true, {}, @addthisConfig.ui
-      share = $.extend true, {}, @addthisConfig.share
-      addthis?.toolbox @el, ui, share
+      ui = $.extend(true, {}, @addthisConfig.ui)
+      share = $.extend(true, {}, @addthisConfig.share)
+      addthis?.toolbox(@el, ui, share)
       super
 
     isValidToShow: ->
       addthis? and _.any(@model.get('address'))
 
     toggleView: ->
-      $(@el).toggleClass 'collapsed'
+      $(@el).toggleClass('collapsed')

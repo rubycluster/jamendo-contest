@@ -1,6 +1,8 @@
 define [
   'backbone'
-], (Backbone) ->
+], (
+  Backbone
+) ->
 
   class BaseModel extends Backbone.Model
 
@@ -13,24 +15,24 @@ define [
         super
 
     toServerJSON: ->
-      json = _.clone @toJSON()
-      if _.any @serverAttrs
+      json = _.clone(@toJSON())
+      if _.any(@serverAttrs)
         mapAttrs = _(@serverAttrs).select (attr) ->
-          /{}$/.test attr
-        pickAttrs = _.difference @serverAttrs, mapAttrs
+          /{}$/.test(attr)
+        pickAttrs = _.difference(@serverAttrs, mapAttrs)
 
-        if _.any pickAttrs
-          json = _.pick json, pickAttrs
+        if _.any(pickAttrs)
+          json = _.pick(json, pickAttrs)
         else
           json = {}
 
-        if _.any mapAttrs
+        if _.any(mapAttrs)
           hash = _.chain(mapAttrs)
             .map (attr) ->
               attr.split(/{}$/)[0]
             .reduce( (memo, attr) =>
               delete json[attr]
-              _.extend memo, @get attr
+              _.extend(memo, @get(attr))
             , {})
             .value()
           _.extend json, hash
@@ -42,25 +44,25 @@ define [
         response: response
 
     sync: ->
-      if _.isFunction @syncer
+      if _.isFunction(@syncer)
         sync = new @syncer
-        sync.process arguments
+        sync.process(arguments)
       else
         super
 
     fetch: (options = {}) ->
-      if _.isFunction @syncer
-        options = _.clone options
+      if _.isFunction(@syncer)
+        options = _.clone(options)
         method = options.method || 'read'
-        if _.isUndefined options.parse
+        if _.isUndefined(options.parse)
           options.parse = true
-        @sync method, @, options
+        @sync(method, @, options)
       else
         super
 
     touch: (attr, value = undefined) ->
       return unless attr?
-      value ||= @get attr
+      value ||= @get(attr)
       @unset attr,
         silent: true
-      @set attr, value
+      @set(attr, value)

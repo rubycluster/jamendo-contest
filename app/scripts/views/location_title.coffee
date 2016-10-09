@@ -2,7 +2,11 @@ define [
   'views/base/item_view'
   'templates/location_title'
   'models/area'
-], (BaseItemView, template, Area) ->
+], (
+  BaseItemView
+  template
+  Area
+) ->
 
   class LocationTitleView extends BaseItemView
 
@@ -25,4 +29,4 @@ define [
       @isValidToShow() && @showView()
 
     isValidToShow: ->
-      _.any @model.get('address')
+      _.any(@model.get('address'))

@@ -1,10 +1,13 @@
 define [
   'backbone_marionette'
   'views/base/mixins'
-], (Marionette, ViewsMixins) ->
+], (
+  Marionette
+  ViewsMixins
+) ->
 
   class BaseLayout extends Marionette.Layout
 
-  _.extend BaseLayout.prototype, ViewsMixins
+  _.extend(BaseLayout.prototype, ViewsMixins)
 
   BaseLayout

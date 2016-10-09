@@ -1,6 +1,8 @@
 define [
   'backbone'
-], (Backbone) ->
+], (
+  Backbone
+) ->
 
   class DummyModel extends Backbone.Model
 
@@ -21,6 +23,6 @@ define [
               main:
                 temp: _.random(10, 20)
             _(7).times ->
-              a.push {}
+              a.push({})
             a
           , [])

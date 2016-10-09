@@ -2,7 +2,11 @@ define [
   'views/base/item_view'
   'templates/help'
   'vent'
-], (BaseItemView, template, vent) ->
+], (
+  BaseItemView
+  template
+  vent
+) ->
 
   class HelpView extends BaseItemView
 
@@ -19,7 +23,7 @@ define [
       @hideView()
 
     hideView: ->
-      $(@el).slideUp 'fast'
+      $(@el).slideUp('fast')
 
     onRender: ->
       @isValidToShow() && @showView()

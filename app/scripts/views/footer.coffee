@@ -2,7 +2,11 @@ define [
   'views/base/item_view'
   'templates/footer'
   'vent'
-], (BaseItemView, template, vent) ->
+], (
+  BaseItemView
+  template
+  vent
+) ->
 
   class FooterView extends BaseItemView
 
@@ -16,8 +20,8 @@ define [
 
     changeLocales: (e) ->
       localeCode = $(e.currentTarget).val()
-      vent.trigger 'locale:set', localeCode, true
+      vent.trigger('locale:set', localeCode, true)
 
     changeTempUnits: (e) ->
       unit = $(e.currentTarget).val()
-      vent.trigger 'temp_units:set', unit
+      vent.trigger('temp_units:set', unit)

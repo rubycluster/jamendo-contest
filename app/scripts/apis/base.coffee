@@ -1,12 +1,15 @@
 define [
   'jquery'
   'underscore'
-], ($, _) ->
+], (
+  $
+  _
+) ->
 
   class BaseAPI
 
     constructor: ->
-      @initialize.apply @, arguments
+      @initialize.apply(@, arguments)
 
     baseUrl: ''
 
@@ -20,8 +23,8 @@ define [
       @
 
     request: ->
-      dfr = $.ajax @ajaxParams()
-      dfr.done @ajaxCallback
+      dfr = $.ajax(@ajaxParams())
+      dfr.done(@ajaxCallback)
       dfr
 
     ajaxParams: ->
@@ -35,7 +38,7 @@ define [
       @prepareResult()
 
     prepareData: ->
-      @data = $.extend true, {}, @dataDefaults, @options.data
+      @data = $.extend(true, {}, @dataDefaults, @options.data)
 
     prepareResult: ->
       @result = @response[0]

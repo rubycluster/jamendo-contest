@@ -1,7 +1,10 @@
 define [
   'views/base/item_view'
   'models/panorama'
-], (BaseItemView, Panorama) ->
+], (
+  BaseItemView
+  Panorama
+) ->
 
   class PanoramaView extends BaseItemView
 
@@ -21,7 +24,7 @@ define [
 
     changeBackground: (model, value) ->
       if _.any(value)
-        @setBackgroundImage value
+        @setBackgroundImage(value)
       else
         @setBackgroundBlank()
 

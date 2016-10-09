@@ -1,7 +1,10 @@
 define [
   'syncs/base'
   'config/settings'
-], (BaseSync, settings) ->
+], (
+  BaseSync
+  settings
+) ->
 
   class WeatherSync extends BaseSync
 
@@ -16,7 +19,7 @@ define [
 
     prepareData: (rawData) ->
       data = _.clone(rawData)
-      @renameParams data
+      @renameParams(data)
       data
 
     renameParams: (data) ->

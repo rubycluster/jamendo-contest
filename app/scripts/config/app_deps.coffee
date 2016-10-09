@@ -9,5 +9,4 @@ define [
   'store'
   'md5'
   'config/locale_deps'
-], () ->
-
+], ->

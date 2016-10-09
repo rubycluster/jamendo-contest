@@ -2,7 +2,11 @@ define [
   'views/base/item_view'
   'templates/player_track'
   'models/track'
-], (BaseItemView, template, Track) ->
+], (
+  BaseItemView
+  template
+  Track
+) ->
 
   class PlayerTrackView extends BaseItemView
 
@@ -25,4 +29,4 @@ define [
       @isValidToShow() && @showView()
 
     isValidToShow: ->
-      _.any @model.get('title')
+      _.any(@model.get('title'))

@@ -1,7 +1,10 @@
 define [
   'collections/base'
   'models/weather_mood_item'
-], (BaseCollection, WeatherMoodItem) ->
+], (
+  BaseCollection
+  WeatherMoodItem
+) ->
 
   class WeatherMoodCollection extends BaseCollection
 

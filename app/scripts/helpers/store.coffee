@@ -1,7 +1,10 @@
 define [
   'underscore'
   'store_original'
-], (_, store) ->
+], (
+  _
+  store
+) ->
 
   _.extend store,
     setOriginal: store.set
@@ -24,13 +27,13 @@ define [
         if not @isExpired key
           info.val
         else
-          @remove key
+          @remove(key)
           null
       else
         info
 
     isExpired: (key) ->
-      info = @getOriginal key
+      info = @getOriginal(key)
       return null  unless info?
       info.exp? and info.time? and \
         (info.exp < new Date().getTime() - info.time)

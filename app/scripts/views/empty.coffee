@@ -1,7 +1,10 @@
 define [
   'views/base/item_view'
   'templates/empty'
-], (BaseItemView, template) ->
+], (
+  BaseItemView
+  template
+) ->
 
   class EmptyView extends BaseItemView
 

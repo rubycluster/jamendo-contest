@@ -1,6 +1,8 @@
 define [
   'backbone_marionette'
-], (Marionette) ->
+], (
+  Marionette
+) ->
 
   class AppRouter extends Marionette.AppRouter
 

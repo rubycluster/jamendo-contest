@@ -2,7 +2,11 @@ define [
   'views/base/item_view'
   'templates/weather_info'
   'models/weather'
-], (BaseItemView, template, Weather) ->
+], (
+  BaseItemView
+  template
+  Weather
+) ->
 
   class WeatherView extends BaseItemView
 
@@ -35,7 +39,7 @@ define [
       @isValidToShow() && @showView()
 
     isValidToShow: ->
-      _.any @model.get('response')
+      _.any(@model.get('response'))
 
     onSync: (model) ->
-      @trigger 'weather:change', model
+      @trigger('weather:change', model)

@@ -1,7 +1,10 @@
 define [
   'underscore'
   'objects/weather_mood_items'
-], (_, weatherMoodItems) ->
+], (
+  _
+  weatherMoodItems
+) ->
 
   class WeatherToVisual
 
@@ -82,32 +85,32 @@ define [
         )
         .flatten()
         .each (name) =>
-          @result.push name
+          @result.push(name)
         .value()
 
     setTemperature: ->
-      temperature = Math.round @weather.main.temp
-      formatted = @formatTemperature temperature, app.settings.temp_units
+      temperature = Math.round(@weather.main.temp)
+      formatted = @formatTemperature(temperature, app.settings.temp_units)
       @result.push
         'temperature': formatted
 
     setTemperatureFeeling: ->
-      @setFromMapByRange 'temperature_feeling', @weather.main.temp
+      @setFromMapByRange('temperature_feeling', @weather.main.temp)
 
     setClouds: ->
-      @setFromMap 'clouds'
+      @setFromMap('clouds')
 
     setRain: ->
-      @setFromMap 'rain'
+      @setFromMap('rain')
 
     setSnow: ->
-      @setFromMap 'snow'
+      @setFromMap('snow')
 
     setWind: ->
-      @setFromMapByRange 'wind', @weather.wind.speed
+      @setFromMapByRange('wind', @weather.wind.speed)
 
     setAtmosphere: ->
-      @setFromMap 'atmosphere'
+      @setFromMap('atmosphere')
 
     setFromMap: (mapKey) ->
       results = []
@@ -115,9 +118,9 @@ define [
       map = @map[mapKey]
       _(map).reduce( (memo, mapCodes, name) ->
         condition = _.any mapCodes, (mapCode) ->
-          _(codes).include mapCode
+          _(codes).include(mapCode)
         if condition
-          memo.push name
+          memo.push(name)
         memo
       , results)
       _.chain(results)
@@ -133,7 +136,7 @@ define [
         if value >= range[0] and value < range[1]
           result = key
       if _.any(result)
-        @result.push result
+        @result.push(result)
 
     collectionItems: (value) ->
       value ||= @convert().result
@@ -143,7 +146,7 @@ define [
             key = _.keys(i)[0]
             value = i[key]
             item = weatherMoodItems[key]
-            item.set 'title', value
+            item.set('title', value)
             item
           else
             weatherMoodItems[i]
@@ -153,7 +156,7 @@ define [
 
     formatTemperature: (value, units) ->
       [
-        Math.round @options.temperature[units].formula(value)
+        Math.round(@options.temperature[units].formula(value))
         '&deg;'
         @options.temperature[units].units
       ].join ''

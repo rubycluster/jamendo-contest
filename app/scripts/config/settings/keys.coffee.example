@@ -1,8 +1,6 @@
-define [
-], () ->
+define ->
 
-  keysSettings =
-    jamendo:
-      client_id: ''
-    addthis:
-      username: ''
+  jamendo:
+    client_id: ''
+  addthis:
+    username: ''

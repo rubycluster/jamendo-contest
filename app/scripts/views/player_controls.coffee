@@ -3,7 +3,12 @@ define [
   'templates/player_controls'
   'models/track'
   'helpers/player'
-], (BaseItemView, template, Track, Player) ->
+], (
+  BaseItemView
+  template
+  Track
+  Player
+) ->
 
   class PlayerControlsView extends BaseItemView
 
@@ -40,7 +45,7 @@ define [
 
     initPlayer: ->
       @player = new Player @ui.audio
-      @trigger 'player:init', @player
+      @trigger('player:init', @player)
 
     onBeforeRender: ->
       @hideView()
@@ -53,7 +58,7 @@ define [
         @player.api.play()
 
     isValidToShow: ->
-      _.any @model.get('media_urls')
+      _.any(@model.get('media_urls'))
 
     fixPressButtonF: ->
       @player.api.enterFullScreen = undefined
@@ -62,7 +67,7 @@ define [
       , 1000
 
     onBeforeHide: ->
-      $('audio').attr 'src', ''
+      $('audio').attr('src', '')
 
     updateWithMood: (value) ->
       @model.updateWithMood(value).fetch()

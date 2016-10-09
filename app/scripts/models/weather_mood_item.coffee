@@ -1,6 +1,8 @@
 define [
   'models/base'
-], (BaseModel) ->
+], (
+  BaseModel
+) ->
 
   class WeatherMoodItem extends BaseModel
 

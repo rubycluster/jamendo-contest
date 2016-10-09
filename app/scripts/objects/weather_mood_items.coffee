@@ -1,7 +1,10 @@
 define [
   'models/weather_mood_item'
   'i18n!nls/locale'
-], (WeatherMoodItem, locale) ->
+], (
+  WeatherMoodItem
+  locale
+) ->
 
   hash =
 

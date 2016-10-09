@@ -1,7 +1,10 @@
 define [
   'models/base'
   'syncs/geocoding'
-], (BaseModel, GeocodingSync) ->
+], (
+  BaseModel
+  GeocodingSync
+) ->
 
   class Area extends BaseModel
 
@@ -21,9 +24,9 @@ define [
 
     parse: (response, options) ->
       parsed = super
-      parsed.position = @parsePosition response
-      parsed.address = @parseAddress response
-      parsed.country = @parseCountry response
+      parsed.position = @parsePosition(response)
+      parsed.address = @parseAddress(response)
+      parsed.country = @parseCountry(response)
       parsed
 
     parsePosition: (response) ->

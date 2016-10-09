@@ -4,7 +4,13 @@ define [
   'models/area'
   'apis/geolocation'
   'vent'
-], (BaseItemView, template, Area, GeolocationAPI, vent) ->
+], (
+  BaseItemView
+  template
+  Area
+  GeolocationAPI
+  vent
+) ->
 
   class LocationFormView extends BaseItemView
 
@@ -49,9 +55,9 @@ define [
         _.throttle(@locationSubmit, @options.inputDelay)
       @on 'location:geolocate',
         _.throttle(@locationGeolocate, @options.geolocateDelay)
-      @on 'location:change', @locationChange
+      @on('location:change', @locationChange)
       @on 'help:toggle', ->
-        vent.trigger 'help:toggle'
+        vent.trigger('help:toggle')
 
     onRender: ->
       @triggerGeolocate()
@@ -64,21 +70,21 @@ define [
         .fail(alert)
 
     locationReverseGeocoding: (position) ->
-      @model.unset 'address'
+      @model.unset('address')
       dfd = @model.fetch
         attrs:
           position: position
         silent: true
       dfd.done =>
-        @model.touch 'address'
+        @model.touch('address')
       dfd
 
     triggerGeolocate: ->
-      $(@ui.geolocate).trigger 'click'
+      $(@ui.geolocate).trigger('click')
 
     locationSubmit: ->
       address = $(@ui.input).val()
-      @model.set 'address', address
+      @model.set('address', address)
       @locationFix(address)
 
     locationFix: (address) ->
@@ -87,12 +93,12 @@ define [
       dfd = @model.fetch
         silent: true
       dfd.done (response) =>
-        @model.touch 'address'
-        @model.touch 'position'
-        if _.any response.results
-          @setValidForm true
+        @model.touch('address')
+        @model.touch('position')
+        if _.any(response.results)
+          @setValidForm(true)
         else
-          @setValidForm false
+          @setValidForm(false)
       dfd
 
     setValidForm: (valid = true) ->
@@ -111,7 +117,7 @@ define [
         .removeClass('invalid')
 
     onAddressChange: (model, value) ->
-      $(@ui.input).val value
+      $(@ui.input).val(value)
 
     onPositionChange: (model, value) ->
-      @trigger 'location:change:position', model, value
+      @trigger('location:change:position', model, value)

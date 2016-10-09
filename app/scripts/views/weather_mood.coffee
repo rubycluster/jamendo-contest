@@ -38,9 +38,9 @@ define [
 
     onItemsChange: (model, value) ->
       @hideView()
-      @collection.set model.get('collectionItems')
+      @collection.set(model.get('collectionItems'))
       @showView()
-      @trigger 'weather_mood:change:items', model, value
+      @trigger('weather_mood:change:items', model, value)
 
     updateWithWeather: (weatherResponse) ->
       day = weatherResponse.list[0]
@@ -50,8 +50,8 @@ define [
         human_date
       ].join(', ')
       @collection.reset()
-      @model.set 'title', title
-      @model.set 'weather', day
+      @model.set('title', title)
+      @model.set('weather', day)
 
     onBeforeRender: ->
       @hideView()

@@ -1,7 +1,10 @@
 define [
   'syncs/base'
   'config/settings'
-], (BaseSync, settings) ->
+], (
+  BaseSync
+  settings
+) ->
 
   class JamendoTracksSync extends BaseSync
 
@@ -9,9 +12,8 @@ define [
 
     cacheTime: settings.global.cache.ajax.jamendo_tracks.time
 
-    paramsDefaults: $.extend(true, {}, @paramsDefaults, {
+    paramsDefaults: $.extend true, {}, @paramsDefaults,
       dataType: 'json'
-    })
 
     dataDefaults:
       client_id: settings.keys.jamendo.client_id

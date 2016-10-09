@@ -2,7 +2,11 @@ define [
   'backbone_marionette'
   'templates/home'
   'models/dummy'
-], (Marionette, template, DummyModel) ->
+], (
+  Marionette
+  template
+  DummyModel
+) ->
 
   class HomePageView extends Marionette.ItemView
 

@@ -1,7 +1,10 @@
 define [
   'models/base'
   'syncs/panoramio'
-], (BaseModel, PanoramioSync) ->
+], (
+  BaseModel
+  PanoramioSync
+) ->
 
   class Panorama extends BaseModel
 
@@ -18,7 +21,7 @@ define [
 
     parse: (response, options) ->
       parsed = super
-      parsed.url = @parseUrl response
+      parsed.url = @parseUrl(response)
       parsed
 
     parseUrl: (response) ->

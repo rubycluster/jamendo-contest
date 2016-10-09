@@ -2,7 +2,11 @@ define [
   'backbone_marionette'
   'views/layouts/main'
   'views/home_page'
-], (Marionette, MainLayout, HomePageView) ->
+], (
+  Marionette
+  MainLayout
+  HomePageView
+) ->
 
   class AppController extends Marionette.Controller
 

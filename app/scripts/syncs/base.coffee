@@ -3,7 +3,12 @@ define [
   'store'
   'config/settings'
   'md5'
-], (Backbone, store, settings, md5) ->
+], (
+  Backbone
+  store
+  settings
+  md5
+) ->
 
   class BaseSync
 
@@ -18,7 +23,7 @@ define [
     dataDefaults: {}
 
     process: ->
-      @sync.apply @, arguments[0]
+      @sync.apply(@, arguments[0])
 
     sync: (method, model, options = {}) ->
       set_options = _(options).omit 'params', 'attrs'
@@ -27,14 +32,14 @@ define [
       params.url = @baseUrl
       data = $.extend true, {}, @dataDefaults,
         (options.attrs || model.toServerJSON(options))
-      params.data = @prepareData data
-      model.trigger 'request', model, xhr, options
-      xhr = options.xhr = @cachedAjax params
+      params.data = @prepareData(data)
+      model.trigger('request', model, xhr, options)
+      xhr = options.xhr = @cachedAjax(params)
       xhr.done (response, status, xhr) =>
-        model.set model.parse(response), set_options
+        model.set(model.parse(response), set_options)
         if options.success
-          options.success @, response, set_options
-        model.trigger 'sync', model, response, set_options
+          options.success(@, response, set_options)
+        model.trigger('sync', model, response, set_options)
       xhr
 
     prepareData: (data = {}) ->
@@ -50,7 +55,7 @@ define [
 
     cachedAjax: (params) ->
       if @cacheTime > 0
-        info = store.get @cacheKey(params)
+        info = store.get(@cacheKey(params))
         info? && @deferredCache(info) || @deferredAjax(params)
       else
         @deferredAjax(params)
@@ -58,7 +63,7 @@ define [
     deferredCache: (info) ->
       dfd = $.Deferred()
       setTimeout ->
-        dfd.resolve info.response, info.status, dfd
+        dfd.resolve(info.response, info.status, dfd)
       , 500
       dfd
 
@@ -72,7 +77,7 @@ define [
       dfd
 
     cacheKey: (params) ->
-      hash = md5 JSON.stringify(params)
+      hash = md5(JSON.stringify(params))
       @cachePrefix + hash
 
     dropCache: (scope = 'expired') ->
@@ -80,7 +85,7 @@ define [
       _.reduce(store.getAll(), (memo, value, key) ->
         if re.test(key)
           if scope is 'expired' and store.isExpired(key) or scope is 'all'
-            memo.push key
-            store.remove key
+            memo.push(key)
+            store.remove(key)
         memo
       , [])

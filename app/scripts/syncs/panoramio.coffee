@@ -1,7 +1,10 @@
 define [
   'syncs/base'
   'config/settings'
-], (BaseSync, settings) ->
+], (
+  BaseSync
+  settings
+) ->
 
   class PanoramioSync extends BaseSync
 
@@ -19,7 +22,7 @@ define [
 
     prepareData: (rawData) ->
       data = _.clone(rawData)
-      @getLocationBounds data
+      @getLocationBounds(data)
       data
 
     getLocationBounds: (data) ->
