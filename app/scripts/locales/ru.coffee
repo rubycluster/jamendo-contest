@@ -74,6 +74,3 @@ define
   buttons:
     hide: 'Скрыть'
     share: 'Поделиться'
-  locales:
-    en: 'English'
-    ru: 'Русский'

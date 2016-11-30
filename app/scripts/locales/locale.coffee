@@ -12,4 +12,5 @@ define [
   i18n.translations.ru = localeRu
   i18n.locale =
     localStorage?.getItem('locale') || 'en'
+  i18n.fallbacks = true
   i18n
