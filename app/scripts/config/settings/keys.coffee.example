@@ -4,3 +4,5 @@ define ->
     client_id: ''
   addthis:
     username: ''
+  openweathermap:
+    api_key: ''

@@ -1,6 +1,6 @@
 define [
-  'config/settings/global'
-  'config/settings/keys'
+  './settings/global'
+  './settings/keys'
 ], (
   globalSettings
   keysSettings

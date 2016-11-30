@@ -1,0 +1,7 @@
+define [
+  './original'
+], (
+  oMoment
+) ->
+
+  oMoment

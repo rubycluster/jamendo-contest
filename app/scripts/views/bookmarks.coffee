@@ -3,13 +3,11 @@ define [
   'templates/bookmarks'
   'models/area'
   'config/settings'
-  'i18n!nls/locale'
 ], (
   BaseItemView
   template
   Area
   settings
-  locale
 ) ->
 
   class BookmarksView extends BaseItemView
@@ -31,8 +29,8 @@ define [
         ui_click: true
       share:
         url: settings.global.app.url
-        title: locale.share.title
-        description: locale.share.description
+        title: locale.t('share.title')
+        description: locale.t('share.description')
 
     initialize: ->
       @initTriggers()

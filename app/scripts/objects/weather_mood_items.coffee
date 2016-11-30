@@ -1,9 +1,7 @@
 define [
   'models/weather_mood_item'
-  'i18n!nls/locale'
 ], (
   WeatherMoodItem
-  locale
 ) ->
 
   hash =
@@ -93,7 +91,8 @@ define [
   _(hash).chain()
     .reduce( (memo, value, key) ->
       memo[key] = value
-      memo[key]['title'] ||= locale.weather_mood[key] || ''
+      memo[key]['title'] ||=
+        locale.t("weather_mood.#{key}") || ''
       memo
     , {})
     .reduce( (memo, value, key) ->

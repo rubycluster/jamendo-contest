@@ -1,18 +1,11 @@
-'use strict'
-
 define [
-  'backbone'
-  'backbone_marionette'
   'templates'
-  'config/global_handlers'
-  'config/settings'
+  'deps/global_handlers'
+  './config/settings'
   'vent'
   'app_controller'
   'app_router'
-  'app_deps'
 ], (
-  Backbone
-  Marionette
   Templates
   GlobalHandlers
   settings
@@ -30,34 +23,15 @@ define [
       console.log '[marionette] template is not found:', template
 
   app = new Marionette.Application()
-
   app.settings = settings
-
   app.vent = vent
-
   app.templates = Templates
-
   app.layout = undefined
 
-  app.on 'initialize:before', (options) ->
-
-  app.on 'initialize:after', (options) ->
-    setTimeout ->
-      Backbone.history.start
-        pushState: false
-        root: '/'
-    , 1000
-
-  app.addInitializer ->
+  app.listenTo app, 'start', ->
     GlobalHandlers.init(app)
-
-  app.addInitializer ->
     app.vent.trigger('settings:init')
-
-  app.addInitializer ->
     app.vent.trigger('cache:ajax:drop', 'expired')
-
-  app.addInitializer ->
     $(document)
       .on('ajaxStart', ->
         $('.ajax-spinner').addClass('spin')
@@ -65,10 +39,13 @@ define [
       .on('ajaxStop', ->
         $('.ajax-spinner').removeClass('spin')
       )
-
-  app.addInitializer ->
-    app.appController = new AppController()
+    app.appController = AppController
     app.appRouter = new AppRouter
       controller: app.appController
+    setTimeout ->
+      Backbone.history.start
+        pushState: false
+        root: '/'
+    , 1000
 
   app

@@ -1,14 +1,12 @@
 define [
-  'backbone'
-  'backbone_marionette'
+  'backbone.radio'
   'syncs/base'
 ], (
-  Backbone
-  Marionette
+  Radio
   BaseSync
 ) ->
 
-  vent = new Backbone.Wreqr.EventAggregator()
+  vent = Radio.channel('vent')
 
   vent.data = {}
 
@@ -20,7 +18,7 @@ define [
     vent.trigger('temp_units:init')
 
   vent.on 'locale:init', ->
-    locale = localStorage?.getItem('locale') || navigator?.language || 'en'
+    locale = localStorage?.getItem('locale') || 'en'
     app.settings.locale = locale
     @trigger('locale:set', locale)
 

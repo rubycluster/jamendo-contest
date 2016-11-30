@@ -39,7 +39,8 @@ Weather mood expressed in music.
 * [jQuery](http://jquery.com/) and jQuery plugins
 * [Moment.js](http://momentjs.com)
 * [Require.js](http://requirejs.org/)
-* [Yeoman](http://yeoman.io/), [Grunt.js](http://gruntjs.com/), [Bower](http://bower.io/) as build tools
+* [Webpack](https://webpack.github.io/)
+* (originally) [Yeoman](http://yeoman.io/), [Grunt.js](http://gruntjs.com/), [Bower](http://bower.io/) as build tools
 * [CoffeeScript](http://coffeescript.org/)
 * [HAML](http://haml.info/) and [SASS](http://sass-lang.com/)
 * [HTML5](http://en.wikipedia.org/wiki/HTML5) and [CSS3](http://www.w3schools.com/css3/)
@@ -53,7 +54,7 @@ Weather mood expressed in music.
 
 * [Jamendo API](http://developer.jamendo.com/v3.0)
 * [Open Weather Map API](http://openweathermap.org/api)
-* [Panoramio API](http://www.panoramio.com/api/)
+* (originally) [Panoramio API](http://www.panoramio.com/api/)
 * [Google Geocoding API](http://developers.google.com/maps/documentation/geocoding/)
 * [HTML5 Geolocation API](http://www.w3schools.com/html/html5_geolocation.asp)
 
@@ -65,11 +66,9 @@ Weather mood expressed in music.
 
 ## Install
 
-    npm install -g yo grunt-cli bower
     git clone git://github.com/rubycluster/playweather.git
     cd playweather
     npm install
-    bower install
 
 ## Configure
 
@@ -77,26 +76,24 @@ Copy example config files and add your own keys and values:
 
     cp app/scripts/config/settings/keys.coffee.example \
        app/scripts/config/settings/keys.coffee
-    cp grunt-settings.json.example \
-       grunt-settings.json
 
 ## Start development server
 
-    grunt server --force
+    webpack-dev-server
 
 Application is now available at:
 
-    http://localhost:9000/
+    http://localhost:8080
 
 ## Build application
 
-    grunt build
+    gulp build
 
 # License
 
 The MIT License (MIT)
 
-Copyright (c) 2013 [Vlad Alive](http://github.com/vladalive)
+Copyright (c) 2013-2016 [Vlad Alive](http://github.com/vladalive)
 
 # Credits
 

@@ -1,6 +1,6 @@
 .callout.info
 
-  - if _.any @title
+  - if @title
     %h3
       = @title
 

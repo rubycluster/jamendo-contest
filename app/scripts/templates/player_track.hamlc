@@ -12,19 +12,19 @@
       .track
         - if _.any @title
           .tag
-            = l.tags.track
+            = locale.t('tags.track')
           .title
             %a{href: @track_url, target: '_blank'}
               = @title
         - if _.any @artist
           .tag
-            = l.tags.artist
+            = locale.t('tags.artist')
           .artist
             %a{href: @artist_url, target: '_blank'}
               = @artist
         - if _.any @album
           .tag
-            = l.tags.album
+            = locale.t('tags.album')
           .album
             %a{href: @album_url, target: '_blank'}
               = @album

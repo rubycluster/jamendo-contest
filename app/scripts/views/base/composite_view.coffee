@@ -1,14 +1,12 @@
 define [
-  'backbone_marionette'
   'views/base/mixins'
   'views/empty'
 ], (
-  Marionette
   ViewsMixins
   EmptyView
 ) ->
 
-  class BaseCompositeView extends Marionette.CompositeView
+  class BaseCompositeView extends Marionette.View
 
     emptyView: EmptyView
 

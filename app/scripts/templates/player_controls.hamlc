@@ -1,3 +1,5 @@
+- h = require('helpers/templates_helpers')
+
 .callout
   %audio#player{controls: false}
     - _.each @media_urls, (url, mediaType) ->

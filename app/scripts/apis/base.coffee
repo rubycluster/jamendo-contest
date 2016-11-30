@@ -1,10 +1,4 @@
-define [
-  'jquery'
-  'underscore'
-], (
-  $
-  _
-) ->
+define ->
 
   class BaseAPI
 

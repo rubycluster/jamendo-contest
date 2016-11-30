@@ -1,8 +1,4 @@
-define [
-  'underscore'
-], (
-  _
-) ->
+define ->
 
   class MoodToTracksRequest
 

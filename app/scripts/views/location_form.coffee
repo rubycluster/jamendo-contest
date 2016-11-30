@@ -48,7 +48,7 @@ define [
       @
 
     initBindings: ->
-      _.bindAll @, 'locationReverseGeocoding'
+      _.bindAll(@, 'locationReverseGeocoding')
 
     initTriggers: ->
       @on 'location:submit',

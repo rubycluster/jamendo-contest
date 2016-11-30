@@ -78,7 +78,7 @@ define [
       @views.help = new HelpView
       @views.location_form = new LocationFormView
         model: @models.area
-      @views.panorama = new PanoramaView
+      # @views.panorama = new PanoramaView
       @views.bookmarks = new BookmarksView
         model: @models.area
       @views.location_title = new LocationTitleView
@@ -97,15 +97,15 @@ define [
 
     initViewsEvents: ->
       @views.location_form.on 'location:submit', =>
-        @views.player_controls.trigger 'player:stop'
+        @views.player_controls.trigger('player:stop')
         @hideInfoViews()
         @setBackgroundBlank()
       @views.location_form.on 'location:change:position', (model, value) =>
         @views.footer.showView()
       @views.location_form.on 'location:change:position', (model, value) =>
         @views.weather_info.updateWithPosition(value)
-      @views.location_form.on 'location:change:position', (model, value) =>
-        @views.panorama.updateWithPosition(value)
+      # @views.location_form.on 'location:change:position', (model, value) =>
+        # @views.panorama.updateWithPosition(value)
       @views.weather_info.on 'weather:change', (model) =>
         @views.weather_mood.updateWithWeather(model.get('response'))
       @views.weather_mood.on 'weather_mood:change:items', (model, value) =>
@@ -114,7 +114,7 @@ define [
         fn = _.bind(@views.vote.showViewIfValid, @views.vote)
         _.delay(fn, 3000)
       vent.on 'temp_units:set', =>
-        $('body').scrollTop 0
+        $('body').scrollTop(0)
         @views.weather_info.render()
         @views.weather_mood.model.touch('weather')
         @views.weather_mood.render()

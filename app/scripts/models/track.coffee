@@ -34,7 +34,7 @@ define [
     parse: (response, options) ->
       parsed = super
       result = _(response.results).chain().shuffle().first().value()
-      if _.anyr(result)
+      if _.any(result)
         @parseAttributesFromResult(parsed, result)
       parsed
 

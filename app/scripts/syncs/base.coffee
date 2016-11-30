@@ -1,10 +1,8 @@
 define [
-  'backbone'
   'store'
   'config/settings'
   'md5'
 ], (
-  Backbone
   store
   settings
   md5

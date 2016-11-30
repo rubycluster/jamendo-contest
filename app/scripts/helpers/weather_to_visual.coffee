@@ -1,8 +1,6 @@
 define [
-  'underscore'
   'objects/weather_mood_items'
 ], (
-  _
   weatherMoodItems
 ) ->
 

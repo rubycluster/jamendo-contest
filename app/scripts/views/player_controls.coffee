@@ -37,11 +37,11 @@ define [
 
     initTriggers: ->
       @on 'player:play', =>
-        @player? && @player.api.play()
+        @player?.api.play()
       @on 'player:stop', =>
-        @player? && @player.api.pause()
+        @player?.api.pause()
       @on 'player:pause', =>
-        @player? && @player.api.pause()
+        @player?.api.pause()
 
     initPlayer: ->
       @player = new Player @ui.audio

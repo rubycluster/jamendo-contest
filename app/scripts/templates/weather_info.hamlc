@@ -1,3 +1,4 @@
+- h = require('helpers/templates_helpers')
 - WeatherToVisual = require 'helpers/weather_to_visual'
 - templateWeatherMoodItem = require('templates/weather_mood_item')
 

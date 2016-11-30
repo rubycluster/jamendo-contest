@@ -1,6 +1,7 @@
 define [
-  'mediaelement'
-], ->
+  'mediaelement/build/mediaelement-and-player.js'
+], (
+) ->
 
   class Player
 

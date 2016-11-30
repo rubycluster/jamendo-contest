@@ -1,8 +1,6 @@
 define [
-  'underscore'
   'store_original'
 ], (
-  _
   store
 ) ->
 

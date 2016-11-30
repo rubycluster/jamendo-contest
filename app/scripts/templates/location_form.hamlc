@@ -4,21 +4,21 @@
 
     %span.prefix.two.twelfth
       %label{for: 'location'}
-        = l.form.location
+        = locale.t('form.location')
 
     .five.twelfth
-      %input#location{type: 'text', placeholder: l.form.enter_location}
+      %input#location{type: 'text', placeholder: locale.t('form.enter_location')}
 
-    %a#geolocate.one.twelfth.suffix{href: '#', title: l.form.my_location}
+    %a#geolocate.one.twelfth.suffix{href: '#', title: locale.t('form.my_location')}
       %span.small-tablet-only
-        = l.form.my_location
+        = locale.t('form.my_location')
       %i.icon-globe.ajax-spinner
 
-    %a#link-help.one.twelfth{href: '#', title: l.form.help}
+    %a#link-help.one.twelfth{href: '#', title: locale.t('form.help')}
       %span.small-tablet-only
-        = l.form.help
+        = locale.t('form.help')
       %i.icon-question-sign
 
-    %a#location-submit.button.orange.three.twelfth{href: '#', title: l.form.play}
-      = l.form.play
+    %a#location-submit.button.orange.three.twelfth{href: '#', title: locale.t('form.play')}
+      = locale.t('form.play')
       %i.icon-play-circle

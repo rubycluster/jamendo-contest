@@ -16,6 +16,7 @@ define [
       lang: 'en'
       units: 'metric'
       mode: 'json'
+      APPID: settings.keys.openweathermap.api_key
 
     prepareData: (rawData) ->
       data = _.clone(rawData)

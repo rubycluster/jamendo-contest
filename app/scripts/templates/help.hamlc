@@ -1,4 +1,4 @@
-- tabs = l.help.tabs
+- tabs = locale.t('help.tabs')
 - classes = (index) -> index == 0 && 'active' || ''
 - id = (index) -> 'help-' + (index + 1).toString()
 
@@ -7,8 +7,8 @@
     - _.each tabs, (tab, index) ->
       %li
         %a{class: classes(index), href: '#' + id(index)}
-          != l.help.links[tab]
+          != locale.t("help.links.#{tab}")
   - _.each tabs, (tab, index) ->
     %div{id: id(index), class: classes(index)}
       %i.icon-question-sign.icon-2x.pull-right
-      != l.help.content[tab]
+      != locale.t("help.content.#{tab}")

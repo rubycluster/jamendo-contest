@@ -1,14 +1,12 @@
 define [
-  'backbone_marionette'
   'templates/home'
   'models/dummy'
 ], (
-  Marionette
   template
   DummyModel
 ) ->
 
-  class HomePageView extends Marionette.ItemView
+  class HomePageView extends Marionette.View
 
     template: template
 
@@ -20,11 +18,11 @@ define [
       @
 
     onRender: ->
-      url = "http://static.panoramio.com/photos/original/64910164.jpg"
+      # url = "http://static.panoramio.com/photos/original/64910164.jpg"
       $('body')
         .attr('style', null)
         .removeClass('cover')
         .addClass('blank')
         .removeClass('blank')
         .addClass('cover')
-        .attr('style', 'background-image: url(' + url + ')')
+        # .attr('style', 'background-image: url(' + url + ')')

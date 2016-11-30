@@ -1,4 +1,4 @@
-- title = settings.global.app.title
+- title = config.global.app.title
 
 %h1.align-center.blue{title: title}
   %a{href: '/'}

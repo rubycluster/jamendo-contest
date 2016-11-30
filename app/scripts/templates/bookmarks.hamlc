@@ -1,13 +1,13 @@
 .callout.info
   %a.button-show.button.small.orange{href: '#'}
     %i.icon-bullhorn
-    = l.buttons.share
+    = locale.t('buttons.share')
   %a.button-hide.button.small{href: '#'}
     %i.icon-remove-sign
-    = l.buttons.hide
+    = locale.t('buttons.hide')
   %h3
     %span><
-      = l.share.share
+      = locale.t('share.share')
     :
   .addthis_toolbox.addthis_default_style.addthis_32x32_style
     %a.addthis_button_facebook

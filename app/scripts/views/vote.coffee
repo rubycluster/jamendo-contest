@@ -2,12 +2,10 @@ define [
   'views/base/item_view'
   'templates/vote'
   'vent'
-  'moment'
 ], (
   BaseItemView
   template
   vent
-  moment
 ) ->
 
   class VoteView extends BaseItemView

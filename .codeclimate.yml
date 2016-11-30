@@ -14,5 +14,4 @@ exclude_paths:
   - "app/scripts/vendor/**/*"
   - "app/styles/groundwork.css"
   - "app/styles/mediaelementplayer.css"
-  - "app/scripts/nls/**/*.coffee"
   - "Gruntfile.coffee"
